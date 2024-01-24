@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX02 - Pomodoro Timer Frontend - COMP423 - 24S</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1706018138.0895073">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP423</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h2>EX02 - Pomodoro Timer Frontend</h2>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#workflow-expectations">Workflow Expectations</a></li>
+<li><a href="#personas">Personas</a></li>
+<li><a href="#stories">Stories</a>
+<ul>
+<li><a href="#story-a">Story A</a></li>
+<li><a href="#story-b">Story B</a></li>
+<li><a href="#story-c">Story C</a></li>
+<li><a href="#story-d">Story D</a></li>
+<li><a href="#story-e">Story E</a></li>
+<li><a href="#technical-requirements">Overall Technical Requirements</a></li>
+</ul></li>
+<li><a href="#optional-challenges">Optional Challenges</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#final-submission---build-and-deploy-strategy-for-github-pages">Final Submission - Build and Deploy Strategy for GitHub Pages</a>
+<ul>
+<li><a href="#the-general-strategy-will-be-as-follows">The general strategy will be as follows:</a></li>
+<li><a href="#building-locally-and-pushing-to-gh-pages">Building Locally and Pushing to <code>gh-pages</code></a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3">
+<h2 id="introduction">Introduction</h2>
+<p>In this exercise, you and a partner will create the front-end user interface for a simple Pomodoro timer system for the UNC 
+  CS Experience Lab site. This exercise will allow you to become more familiar with using Angular and Typescript to create 
+  frontend applications, as well as integrating your own code into a pre-existing codebase.</p>
+<p> If you are not familiar with the concept of a Pomodoro timer, it is a timer that loops through a “working”/”break” timer 
+    cycle to help you stay focused and avoid burnout. Feel free to look up existing Pomodoro timers 
+    for inspiration/understanding (and maybe use one while pair programming!!).</p>
+<p>Be sure to scan the full write up (especially the technical requirements) before you begin writing code to ensure that you adhere to all of the outlined specifications.</p>
+<h2 id="workflow-expectations">Workflow Expectations</h2>
+<p>Pair Program, ideally in person, on each of the stories. Do so in work-in-progress branches that get pushed to your team’s repository 
+  and merged back into the main branch. Each member of the pair should be the commit author for at least one of the subtasks. You are 
+  encouraged to create a branch per story and a commit per subtask completion. Once all subtasks are complete, merge the story’s commits 
+  back into <code>main</code>.</p>
+<p>Once finished with a story, the “driving” partner should create a pull request for the completion of the story, and the “navigating” 
+  partner should review it and merge it into main via GitHub’s interface. Each partner should create at least two pull requests, and 
+  each partner must merge two pull requests from the other partner. For reference on pull requests see 
+  <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Creating a pull request</a> and 
+  <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merging a pull request</a>.</p>
+<hr />
+<h2 id="personas">Personas</h2>
+<p>For this exercise, there is only one persona we will be focusing on. We will expand on these personas in a later exercise where you 
+  will extend the functionality of your Pomodoro timer system.</p>
+<p>Sally Student - Sally is a CS major who will visit and return to the CSXL site as a productivity space.</p>
+<hr />
+
+<h2 id="stories">Stories</h2>
+
+<h3 id="story-a">Story A</h3>
+<p>As any persona, I want to click to my Productivity Page so I can quickly navigate to and view my Pomodoro timers.</p>
+<p>Subtasks:</p>
+<ol type="1">
+<li>All personas should find a link to the route that features the Pomodoro timers on a Productivity Page with a URL path of “/productivity”.</li>
+<ol type="a"><li>This link should be available in the existing navigation sidebar.</li></ol>
+</ol>
+<p>Technical Requirements:</p>
+<ol type="1">
+<li>The Productivity Page should be its own component separate from the components of any other pages on the CSXL site.</li>
+<li>Productivity should use its own service named <code>Productivity Service</code>.</li>
+</ol>
+<p><i>Note:</i> Unless you want to tackle Optional Challenge #1, make sure you explicitly define that the Productivity component 
+  should be associated with the App Module by using the command: <code>ng generate component componentName --module=app.module</code></p>
+
+  <h3 id="story-b">Story B</h3>
+<p>As any persona, I want to create Pomodoro timers with different descriptions and configurations so I can study and use my timers more efficiently.
+</p>
+<p><i>Note:</i> Please read and complete this story with Story D in mind!</p>
+<p>Subtasks:</p>
+<ol type="1">
+<li>I want to navigate to the “Pomodoro creation” form with the URL path of “/productivity/edit/:pomo_id” by clicking an appropriately placed create button/icon.</li>
+<ol type="a"><li><i>Hint:</i> Since you are creating the Pomodoro, you will not have an id yet. Consider using a “default” id to handle creating new Pomodoros.</li></ol>
+<li>I want my timers to have a unique integer id, names, descriptions, “work session” lengths, and “break session” lengths so I can properly define and distinguish my timers from each other.</li>
+<li>I should see a success message after I create a new Pomodoro.</li>
+</ol>
+<p>Technical Requirements:</p>
+<ol type="1">
+<li>The integer id generated for the timers should increment such that the first timer created has an id of 1, the next has an id of 2, and so on.</li>
+<ol type="a"><li>You will have to determine a way to do this manually!</li></ol>
+<li>You should add the extra id, name, and description fields without editing the provided Pomodoro file.</li>
+<li>A user should not be able to create a timer with the same name as another timer.</li>
+<li>Each form field should have appropriate validation.</li>
+</ol>
+
+<h3 id="story-c">Story C</h3>
+<p>As any persona, I want to be able to view my created timers so I can start, pause, and restart them as needed.</p>
+<p>Subtasks:</p>
+<ol type="1">
+<li>I want to view my timers on the Productivity Page created in Story A with the URL path ‘/productivity’.</li>
+<li>I want each of my timers to have a consistent user interface that displays the name, description, and time remaining for each timer.</li>
+<li>I want each timer to have a start/resume button to begin the countdown or continue running the countdown after it has been paused.</li>
+<li>I want each timer to have a pause button to pause the countdown.</li>
+</ol>
+<p>Technical Requirements:</p>
+<ol type="1">
+<li>There should not be a separate button for starting and resuming, even though the methods called for start vs. resume are distinct.</li>
+<ol type="a"><li>You may choose to make separate buttons first to ensure you have implemented the functionality correctly, but there should only be one button in your final product.</li></ol>
+<li>The component for a single timer should be a reusable widget. Please refer to Ajay’s <a href="https://github.com/unc-csxl/orientation/blob/main/angular/widgets.md">Crash Course on Angular Widgets</a> to review creating and using widgets.</li>
+<li>The state of each timer should be accurate at any point in time, especially while running.</li>
+<li>A user should only be able to view their own timers.</li>
+</ol>
+
+<h3 id="story-d">Story D</h3>
+<p>As any persona, I want to be able to modify details about my timers.</p>
+<p>Subtasks:</p>
+<ol type="1">
+<li>I want to navigate to the “Pomodoro editor” form with the URL path of “/productivity/edit/:pomo_id” by clicking an appropriately placed edit button/icon.</li>
+</ol>
+<p>Technical Requirements:</p>
+<ol type="1">
+<li>Editing a timer should completely reset the countdown time.</li>
+<li>The editor for a Pomodoro timer should be the same component as the form for creating a Pomodor timer. <i>You should not have separate Typescript (TS) files for editing and creating Pomodoros.</i></li>
+<li>Each form field should have appropriate validation.</li>
+</ol>
+
+
+<h3 id="story-e">Story E</h3>
+<p>As any persona, I want to be able to delete timers I no longer want to use by clicking an appropriately placed delete button/icon.</p>
+<p>Technical Requirements:</p>
+<ol type="1">
+<li>Deleting a timer should automatically update the viewable list/grid of Pomodoro timers displayed on the Productivity Page.</li>
+</ol>
+
+<h3 id="technical-requirements">Overall Technical Requirements</h3>
+<ol type="1">
+<li><p>Use Angular Material UI for forms, icons, cards, and other places where possible.</p></li>
+<li><p>Do not edit the Pomodoro TS file!</p></li>
+</ol>
+<h2 id="optional-challenges">Optional Challenges</h2>
+<ol type="1">
+<li>Structure the TS files for Productivity so that there is a “Productivity Module”, similar to Organizations, Events, and other features already in the XL code base.</li>
+<li>Add a sound and/or notification to indicate when a work/break session has ended.</li>
+<li>When running one timer, ensure that all other timers are disabled until the running timer is either paused or reset.</li>
+<li>Pin whichever timer is active somewhere near the top of the Productivity.</li>
+<li>Add validation to ensure that the break session cannot be longer than the work session.</li>
+<li>Add validation/error messages to the HTML of the form components with styling rather than alerts.</li>
+<li>Aside from MatUI, use CSS to improve styling of your application.</li>
+</ol>
+<h2 id="getting-started">Getting Started</h2>
+<ol type="1">
+<li>Find your Team Name and paired partner on the sheet linked to from the Canvas announcement.</li>
+<li>Lookup their contact information in the <a href="https://directory.unc.edu">UNC Directory</a> if you do not have it already.</li>
+<li>E-mail them, if they have not e-mailed you already, and propose some of the next possible dates and times you can get together to pair program!</li>
+<li>Accept the assignment on GitHub. First see if your team name already exists and join your teammate there, if so. If your team has not been accepted, create it with the exact same name shown on the EX02 Pairing sheet, and your partner will join your team later. PLEASE BE CAREFUL TO NAME YOUR TEAM CORRECTLY AND/OR JOIN THE CORRECT TEAM. The assignment link is here: <a href="https://classroom.github.com/a/6xrpWto_" class="uri">https://classroom.github.com/a/6xrpWto_</a></li>
+<li>Wait until you can meet up with your pair partner to get started on the assignment so you can practice <a href="https://martinfowler.com/articles/on-pair-programming.html">pair programming</a> together!</li>
+<li>Once together, clone your repository.</li>
+<li>Open your repository in VSCode and reopen it in a DevContainer.</li>
+<li>Once inside the DevContainer, open a new terminal.</li>
+<li>Change your working directory to <code>frontend</code>, where the Angular application is, in your Terminal.</li>
+<li>Install 3rd party dependencies: <code>npm install</code></li>
+<li>Open a terminal back up, <code>cd frontend</code> again, and start the Angular development server as in the getting started tutorial.</li>
+<li>From here, you should be able to open the application in the browser <em>and</em> start working on implementing your first stories!</li>
+</ol>
+<h2 id="final-submission---build-and-deploy-strategy-for-github-pages">Final Submission - Build and Deploy Strategy for GitHub Pages</h2>
+<p>These steps are not necessary to follow until your project is ready for submission. The workflow for collaborating with your partner is above.</p>
+<p>Let’s get your project live on the internet! Until we learn about build processes and implementing our own containers and GitHub actions, we will take a simpler approach to deployment than is best practice.</p>
+<h3 id="the-general-strategy-will-be-as-follows">The general strategy will be as follows:</h3>
+<ol type="1">
+<li>You will establish a separate branch, based off of <code>main</code>, for Github Pages deployment named <code>gh-pages</code></li>
+<li>When you want to deploy, you will locally switch to this branch, merge your <code>main</code> branch changes into it (this should always be a fast-forward, why?)</li>
+<li>You will push your <code>gh-pages</code> branch to your team’s GitHub repository.</li>
+<li>Your GitHub repository will be configured to deploy to GitHub Pages (a Static HTML and Files service) based off of the <code>gh-pages</code> branch and, specifically, the <code>/docs</code> directory inside of it.</li>
+<li>You will switch bach to <code>main</code> and continue working.</li>
+</ol>
+<p>These steps are so mechanical, they could also be easily scripted in a shell file! For now, it’s helpful to understand the process before automating and abstracting it away. Once you do, automation here would be a fun optional challenge!</p>
+<h3 id="building-locally-and-pushing-to-gh-pages">Building Locally and Pushing to <code>gh-pages</code></h3>
+<p>Next, switch to a new branch named <code>gh-pages</code>.</p>
+<p>Build your project with <code>ng build</code>. (Be sure your working directory is <code>frontend</code>.) Notice this created a directory named <code>docs</code> at the root of your project. If it didn’t, go back and check your configuration.</p>
+<p>Next, let’s try using the <a href="https://caddyserver.com/">Caddy web server</a>, which is pre-installed in your DevContainer, to host the built project locally. This command expects you are still in the <code>frontend</code> working directory in your shell:</p>
+<p><code>caddy file-server --root ../docs --listen :8080</code></p>
+<p>Now, open a browser to <code>localhost:8080</code> and you should see your built project. Note that if you make changes to your project they will not reload because this is a static, generated version of your project. You would need to rebuild; but we’ll get to that. The whole point is we are building in preparation of deploying to the internet.</p>
+<p>One key difference between running your project locally and running it on GitHub pages is that on GitHub pages, your project URL will be <code>&lt;domain&gt;/&lt;project-repo-name&gt;</code> whereas locally it is <code>localhost:8080/</code>. This difference in the “root” of your files being at <code>/</code> locally versus <code>/project-repo-name/</code> would take some extra configuration to replicate locally, so for now take it on trust that the steps you are about to take are based on expectations of GitHub pages. You can press <code>Ctrl+C</code> to signal for Caddy to stop.</p>
+<p>Let’s rebuild the project for your production environment with a custom <code>base-href</code>, which is required for your application to work with GitHub pages’ URL structure. This is going to be based on the name of your repository on GitHub and will be important to get correct, so double check it. Open your team’s repository on GitHub and grab your repository name. It should be something like: <code>ex02-pomodoro-team-XX</code></p>
+<p>Rebuild your angular project with a custom <code>base-href</code>:</p>
+<p><code>ng build --base-href=/ex02-pomodoro-team-XX/</code></p>
+<p>Be sure to include the slashes and substitute the XX for your team name!</p>
+<p>Add the files in your <code>docs</code> directory to a new commit and push your branch to GitHub: <code>git push origin gh-pages</code></p>
+<p>Back in GitHub, in your project’s settings, go to <code>Pages</code> and under “Build and deployment” select “Deploy from a branch”. Under branch, select your <code>gh-pages</code> branch. If it does not show up, go check previous steps. Then select your <code>/docs</code> directory. Save your changes.</p>
+<p>The build and deploy to GitHub Pages can take a few minutes, but if you refresh after a minute or two you should see a message at the top saying: “Your site is live at URL” and be able to click the URL to see your built site live in production on GitHub Pages! You can send this to your mom!</p>
+<p>If it doesn’t work, you’ll want to go back and confirm the build, commit, and push steps above. You can also try viewing the HTML of your index page on GitHub pages and looking for the <code>base</code> tag in the <code>head</code> section and being sure it is set to <code>/&lt;your project name&gt;/</code>. This is what gets configured during the build step with the <code>base-href</code> option above.</p>
+<p>Once you have successfully built and deployed your site, all that is left to do is switch back to the <code>main</code> branch so you can continue work. If you want to publish in the future, your steps are:</p>
+<ol type="1">
+<li>Switch to the <code>gh-pages</code> branch.</li>
+<li>Pull from the <code>gh-pages</code> branch to be sure you have any changes your teammate(s) may have made.</li>
+<li>Merge in changes from your <code>main</code> branch.</li>
+<li>Rebuild your project (be sure to set the base-href option!)</li>
+<li>Make a commit with the updated files in your <code>docs</code> directory.</li>
+<li>Push to your remote repository’s <code>gh-pages</code> branch.</li>
+<li>Switch back to <code>main</code> locally and keep on hacking!</li>
+</ol>
+<p><strong>Caution</strong>: Be careful to avoid building and committing while on the <code>main</code> branch. This will muddy up your repository. If you do, the best thing would be to delete those files and commit their deletion from the main branch.</p>
+<p><strong>Best Practice</strong>: Typically it is best practice <em>not</em> to commit manually built files into a repository. Those are artifacts are best produced during an automated build process via a continuous integration system (such as GitHub Actions). However, setting up continuous integration systems is a large topic we’ll explore later, so for now we are limiting the impact of these built files by using a separate branch to keep them cleanly tucked away in. You should be careful to avoid these files being added to your <code>main</code> branch!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h6 class="text-center align-middle footer-text">&copy; 2024 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScQMteEvnQpBfGsAYP5TpuqokQenhZUIf8CNvfAUUZEjMCWZQ/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</body>
+
+</html>
