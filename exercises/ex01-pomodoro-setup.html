@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX01 Pomodoro Frontend Setup - COMP423 - 24S</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1706018137.4359546">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP423</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h2>EX01 Pomodoro Frontend Setup</h2>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#setup-team-on-github-classroom">Setup Team on GitHub Classroom</a></li>
+<li><a href="#setup-project-tracking-board">Setup Project Tracking Board</a></li>
+<li><a href="#initialize-team-repository">Initialize Team Repository</a></li>
+<li><a href="#github-repository-configuration">GitHub Repository Configuration</a></li>
+<li><a href="#setting-up-team-members-development-repositories">Setting up Team Member’s Development Repositories</a></li>
+<li><a href="#setting-up-your-development-environment">Setting up your Development Environment</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="setup-team-on-github-classroom">Setup Team on GitHub Classroom</h2>
+<ol type="1">
+<li><p>The youngest member of your team present on 1/29 should carefully create the team. Only one member needs to take this step <em>first</em>. Create a team named “EX01 Team ZN” where the Z is the Zone Number and N is the Table Number of your group. For example, “EX01 Team A1”. Accept the assignment on behalf of your team and, after refreshing, it will create a repository at <code>github.com/comp423-23f/ex02-pomodoro-frontend-a1</code>. Assignment acceptance link: <a href="https://classroom.github.com/a/epFTASxT" class="uri">https://classroom.github.com/a/epFTASxT</a></p></li>
+<li><p>After completing Step 1, all other members of the team should join the correct team and accept the assignment to be added to the repository. Assignment acceptance link: <a href="https://classroom.github.com/a/RDhFwB_E"</a></p></li>
+</ol>
+<h2 id="initialize-team-repository">Initialize Team Repository</h2>
+<ol type="1">
+<li>Team members should meet and work together to initialize the team repository.</li>
+<li>In a terminal on your host system, not within VSCode, create a new directory with the name of your team’s EX01 project repository and <code>cd</code> into it:
+<ul>
+<li><code>mkdir csxl-ex01-team-ZN</code> (replace ZN with your team’s zone and table number)</li>
+<li><code>cd csxl-ex01-team-ZN</code></li>
+</ul></li>
+<li>Initialize the new empty directory as a <code>git</code> repository:
+<ul>
+<li><code>git init</code></li>
+</ul></li>
+<li>Add a git remote repository named <code>upstream</code> bound to the public, open source CSXL web app repository:
+<ul>
+<li><code>git remote add upstream https://github.com/unc-csxl/csxl.unc.edu.git</code></li>
+</ul></li>
+<li>Pull the <code>comp423-24s/ex02</code> branch from <code>upstream</code>:
+<ul>
+<li><code>git pull upstream comp423-24s/ex02</code></li>
+</ul></li>
+<li>Add a git remote repository named <code>origin</code>. This will be bound to your team’s private EX01 project repository. You will need to find the correct repository URL. Open your team’s EX01 project repository on GitHub in a web browser, click the down triangle on the green Code button, and copy the Clone URL. Use this URL in the placeholder below:
+<ul>
+<li><code>git remote add origin TEAM_REPO_URL_PLACEHOLDER</code></li>
+</ul></li>
+<li>Push the <code>comp423-24s/ex02</code> branch to the <code>origin</code> remote (your team’s repository): <code>git push origin comp423-24s/ex02</code></li>
+<li>Your team will work off of a staging branch named <code>stage</code>, rather than the <code>main</code> branch. Go ahead and establish a <code>stage</code> branch locally and push it:
+<ul>
+<li><code>git switch --create stage</code></li>
+<li><code>git push origin stage</code></li>
+</ul></li>
+</ol>
+<h2 id="github-repository-configuration">GitHub Repository Configuration</h2>
+<p>After the team repository has been initialized, the youngest member of the team needs to setup the following repository branch settings in GitHub:</p>
+<ol type="1">
+<li>Settings</li>
+<li>General &gt; Default Branch &gt; Change Branch to <code>stage</code>
+<ul>
+<li>Press the <strong>Swap Button (not the Pencil!)</strong> and select <code>stage</code></li>
+<li>If you do not see <code>stage</code>, be sure you completed all the steps in “Initialize Team Repository”, then refresh this page and try again.</li>
+</ul></li>
+<li>Change to the Branches tab in the sidebar
+<ol start="0" type="1">
+<li>Add Branch Protection Rule to prevent any pushing to <code>main</code></li>
+<li>Branch name pattern: <code>main</code></li>
+<li>(Check) Lock branch</li>
+<li>(Check) Do not allow bypassing the above settings</li>
+<li>Save Changes with Create Button</li>
+</ol></li>
+<li>Add Branch Protection Rule to enforce a professional team workflow on <code>stage</code>
+<ol type="1">
+<li>Branch name pattern: <code>stage</code></li>
+<li>(Check) Require a pull request before merging
+<ol type="1">
+<li>(Check) Require approvals: 1 required</li>
+<li>(Check) Dismiss stale pull request approvals when new commits are pushed</li>
+<li>(Check) Require approval of the most recent reviewable push</li>
+</ol></li>
+<li>(Check) Require conversation resolution before merging</li>
+<li>(Check) Require linear history</li>
+<li>(Check) Do not allow bypassing the above settings</li>
+<li>Save Changes</li>
+</ol></li>
+</ol>
+<h2 id="setting-up-team-members-development-repositories">Setting up Team Members' Development Repositories</h2>
+<p>After the GitHub Repository Configuration step has been completed, the other members of the team can setup their local development repositories. The team member who completed “Initialize Team Repository” can forego these steps.</p>
+<ol type="1">
+<li>In a terminal on your host system, not within VSCode, clone your team’s EX01 project repository and <code>cd</code> into it:
+<ul>
+<li><code>git clone EX01-TEAM-REPOSITORY</code> - Find the EX01 Team Repository Clone link from the Code dropdown in your GitHub project’s page.</li>
+<li><code>cd csxl-ex01-team-ZN</code> - Replace ZN with your team’s zone and table number.</li>
+</ul></li>
+<li>Fetch all branches:
+<ul>
+<li><code>git fetch --all</code></li>
+</ul></li>
+<li>Switch to the <code>stage</code> branch. This is the primary branch your team will work off of and merge into:
+<ul>
+<li><code>git switch stage</code></li>
+</ul></li>
+<li>Add a git remote repository named <code>upstream</code> bound to the public, open source CSXL web app repository:
+<ul>
+<li><code>git remote add upstream https://github.com/unc-csxl/csxl.unc.edu.git</code></li>
+</ul></li>
+</ol>
+<h2 id="setting-up-your-development-environment">Setting up your Development Environment</h2>
+<p>Before opening your project in a DevContainer, because there is a step required before the DevContainer will start up successfully, first open your project directory in a local VSCode instance and do not attempt to open it in a DevContainer. If you directly open in a DevContainer, you will certainly see an error.</p>
+<p>Follow the instructions to get started found in the project’s <code>docs</code> directory: <code>docs/get_started.md</code></p>
+</div>
+
+    </div> 
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h6 class="text-center align-middle footer-text">&copy; 2024 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScQMteEvnQpBfGsAYP5TpuqokQenhZUIf8CNvfAUUZEjMCWZQ/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</body>
+
+</html>
