@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> EX01 Pomodoro Frontend Setup - COMP423 - 24S</title>
+  <title> EX01 Pomodoro Frontend Setup - COMP423 - 23S</title>
   <link rel="icon" type="image/png" href="/static/tabbrand.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1706018137.4359546">
+  <link rel="stylesheet" href="/static/styles.css?v=1706559435.1575117">
 </head>
 
 <body>
@@ -51,7 +51,6 @@
                     <div id="TOC" role="doc-toc">
                         <ul class="overview-item"><ul>
 <li><a href="#setup-team-on-github-classroom">Setup Team on GitHub Classroom</a></li>
-<li><a href="#setup-project-tracking-board">Setup Project Tracking Board</a></li>
 <li><a href="#initialize-team-repository">Initialize Team Repository</a></li>
 <li><a href="#github-repository-configuration">GitHub Repository Configuration</a></li>
 <li><a href="#setting-up-team-members-development-repositories">Setting up Team Member’s Development Repositories</a></li>
@@ -64,16 +63,16 @@
         </div>
         <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="setup-team-on-github-classroom">Setup Team on GitHub Classroom</h2>
 <ol type="1">
-<li><p>The youngest member of your team present on 1/29 should carefully create the team. Only one member needs to take this step <em>first</em>. Create a team named “EX01 Team ZN” where the Z is the Zone Number and N is the Table Number of your group. For example, “EX01 Team A1”. Accept the assignment on behalf of your team and, after refreshing, it will create a repository at <code>github.com/comp423-23f/ex02-pomodoro-frontend-a1</code>. Assignment acceptance link: <a href="https://classroom.github.com/a/epFTASxT" class="uri">https://classroom.github.com/a/epFTASxT</a></p></li>
-<li><p>After completing Step 1, all other members of the team should join the correct team and accept the assignment to be added to the repository. Assignment acceptance link: <a href="https://classroom.github.com/a/RDhFwB_E"</a></p></li>
+<li><p>One member of the team should carefully create the team. Only one member needs to take this step <em>first</em>. Create a team named “EX01 ZN” where the Z is the <strong>Zone Number</strong> and N is the <strong>Table Number</strong> of your group. For example, “EX01 A1”. Accept the assignment on behalf of your team and, after refreshing, it will create a repository at <code>github.com/comp423-23f/csxl-ex01-pomodoro-front-end-team-a1</code>. Assignment acceptance link: <a href="https://classroom.github.com/a/RDhFwB_E" class="uri">https://classroom.github.com/a/RDhFwB_E</a></p></li>
+<li><p>After completing Step 1, all other members of the team should join the correct team and accept the assignment to be added to the repository. Assignment acceptance link: <a href="https://classroom.github.com/a/RDhFwB_E" class="uri">https://classroom.github.com/a/RDhFwB_E</a></p></li>
 </ol>
 <h2 id="initialize-team-repository">Initialize Team Repository</h2>
 <ol type="1">
-<li>Team members should meet and work together to initialize the team repository.</li>
-<li>In a terminal on your host system, not within VSCode, create a new directory with the name of your team’s EX01 project repository and <code>cd</code> into it:
+<li>Pair up to initialize the team repository.</li>
+<li>In a terminal on your host system, not within VSCode, create a new directory with the name of your team’s final project repository and <code>cd</code> into it:
 <ul>
-<li><code>mkdir csxl-ex01-team-ZN</code> (replace ZN with your team’s zone and table number)</li>
-<li><code>cd csxl-ex01-team-ZN</code></li>
+<li><code>mkdir ex01-pomodoro-team-ZN</code> (replace ZN with your team’s zone and table number)</li>
+<li><code>cd ex01-pomodoro-team-ZN</code></li>
 </ul></li>
 <li>Initialize the new empty directory as a <code>git</code> repository:
 <ul>
@@ -87,19 +86,19 @@
 <ul>
 <li><code>git pull upstream comp423-24s/ex02</code></li>
 </ul></li>
-<li>Add a git remote repository named <code>origin</code>. This will be bound to your team’s private EX01 project repository. You will need to find the correct repository URL. Open your team’s EX01 project repository on GitHub in a web browser, click the down triangle on the green Code button, and copy the Clone URL. Use this URL in the placeholder below:
+<li>Add a git remote repository named <code>origin</code>. This will be bound to your team’s private final project repository. You will need to find the correct repository URL. Open your team’s final project repository on GitHub in a web browser, click the down triangle on the green Code button, and copy the Clone URL. Use this URL in the placeholder below:
 <ul>
 <li><code>git remote add origin TEAM_REPO_URL_PLACEHOLDER</code></li>
 </ul></li>
 <li>Push the <code>comp423-24s/ex02</code> branch to the <code>origin</code> remote (your team’s repository): <code>git push origin comp423-24s/ex02</code></li>
-<li>Your team will work off of a staging branch named <code>stage</code>, rather than the <code>main</code> branch. Go ahead and establish a <code>stage</code> branch locally and push it:
+<li>Your team will work off of a staging branch named <code>stage</code>, rather than the <code>comp423-24s/ex02</code> branch. Go ahead and establish a <code>stage</code> branch locally and push it:
 <ul>
 <li><code>git switch --create stage</code></li>
 <li><code>git push origin stage</code></li>
 </ul></li>
 </ol>
 <h2 id="github-repository-configuration">GitHub Repository Configuration</h2>
-<p>After the team repository has been initialized, the youngest member of the team needs to setup the following repository branch settings in GitHub:</p>
+<p>After the team repository has been initialized, setup the following repository branch settings in GitHub:</p>
 <ol type="1">
 <li>Settings</li>
 <li>General &gt; Default Branch &gt; Change Branch to <code>stage</code>
@@ -109,8 +108,8 @@
 </ul></li>
 <li>Change to the Branches tab in the sidebar
 <ol start="0" type="1">
-<li>Add Branch Protection Rule to prevent any pushing to <code>main</code></li>
-<li>Branch name pattern: <code>main</code></li>
+<li>Add Branch Protection Rule to prevent any pushing to <code>comp423-24s/ex02</code></li>
+<li>Branch name pattern: <code>comp423-24s/ex02</code></li>
 <li>(Check) Lock branch</li>
 <li>(Check) Do not allow bypassing the above settings</li>
 <li>Save Changes with Create Button</li>
@@ -130,13 +129,13 @@
 <li>Save Changes</li>
 </ol></li>
 </ol>
-<h2 id="setting-up-team-members-development-repositories">Setting up Team Members' Development Repositories</h2>
+<h2 id="setting-up-team-members-development-repositories">Setting up Team Member’s Development Repositories</h2>
 <p>After the GitHub Repository Configuration step has been completed, the other members of the team can setup their local development repositories. The team member who completed “Initialize Team Repository” can forego these steps.</p>
 <ol type="1">
-<li>In a terminal on your host system, not within VSCode, clone your team’s EX01 project repository and <code>cd</code> into it:
+<li>In a terminal on your host system, not within VSCode, clone your team’s final project repository and <code>cd</code> into it:
 <ul>
-<li><code>git clone EX01-TEAM-REPOSITORY</code> - Find the EX01 Team Repository Clone link from the Code dropdown in your GitHub project’s page.</li>
-<li><code>cd csxl-ex01-team-ZN</code> - Replace ZN with your team’s zone and table number.</li>
+<li><code>git clone EX01-TEAM-REPOSITORY</code> - Find the Final Team Repository Clone link from the Code dropdown in your GitHub project’s page.</li>
+<li><code>cd ex01-pomodoro-team-ZN</code> - Replace ZN with your team’s zone and table number.</li>
 </ul></li>
 <li>Fetch all branches:
 <ul>
@@ -156,10 +155,12 @@
 <p>Follow the instructions to get started found in the project’s <code>docs</code> directory: <code>docs/get_started.md</code></p>
 </div>
 
+       
+
     </div> 
 
     <div class="authors-box bg-light mt-4 py-3 ps-4">
-      <span> Contributor(s): Kris Jordan</span>
+      <span> Contributor(s):        Kris Jordan, Jade Keegan</span>
     </div>
   </div>
   <div class='link-page mt-3 container'>
