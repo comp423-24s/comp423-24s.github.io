@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> EX01 - Pomodoro Timer Frontend - COMP423 - 23S</title>
+  <title> EX01 - Pomodoro Timer Frontend - COMP423 - 24S</title>
   <link rel="icon" type="image/png" href="/static/tabbrand.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -86,27 +86,66 @@
 <p>Sally Student - Sally is a CS major who will visit and return to the CSXL site as a productivity space.</p>
 <hr />
 <h2 id="stories">Stories</h2>
+
 <h3 id="story-a">Story A</h3>
 <p>As any persona, I want to click to my Productivity Page so I can quickly navigate to and view my Pomodoro timers.</p>
-<p><strong>Subtasks:</strong> 1. All personas should find a link to the route that features the Pomodoro timers on a Productivity Page with a URL path of “/productivity”. a. This link should be available in the existing navigation sidebar.</p>
-<p><strong>Technical Requirements:</strong> 1. The Productivity Page should be its own component separate from the components of any other pages on the CSXL site. 2. Productivity should use its own service.</p>
+<p><strong>Subtasks:</strong></p>
+<ol>
+  <li>All personas should find a link to the route that features the Pomodoro timers on a Productivity Page with a URL path of “/productivity”.</li>
+  <ol type="a"><li>This link should be available in the existing navigation sidebar.</li></ol>
+</ol>
+
+<p><strong>Technical Requirements:</strong>
+  <ol><li>The Productivity Page should be its own component separate from the components of any other pages on the CSXL site. 2. Productivity should use its own service.</li></ol>
 <p><em>Note:</em> Unless you want to tackle Optional Challenge #1, make sure you explicitly define that the Productivity component should be associated with the App Module by using the command <code>ng generate component componentName --module=app.module</code>.</p>
+
 <h3 id="story-b">Story B</h3>
 <p>As any persona, I want to create Pomodoro timers with different descriptions and configurations so I can study and use my timers more efficiently.</p>
 <p><em>Note:</em> Please read and complete this story with Story D in mind!</p>
-<p><strong>Subtasks:</strong> 1. I want to navigate to the “Pomodoro creation” form with the URL path of “/productivity/edit/:pomo_id” by clicking an appropriately placed create button/icon. a. <em>Hint:</em> Since you are creating the Pomodoro, you will not have an id yet. Consider using a “default” id to handle creating new Pomodoros. 2. I want my timers to have a unique integer id, names, descriptions, “work session” lengths, and “break session” lengths so I can properly define and distinguish my timers from each other. 3. I should see a success message after I create a new Pomodoro.</p>
-<p><strong>Technical Requirements:</strong> 1. The integer id generated for the timers should increment such that the first timer created has an id of 1, the next has an id of 2, and so on. a. You will have to determine a way to do this manually! 2. You should add the extra id, name, and description fields without editing the provided Pomodoro file. 3. A user should not be able to create a timer with the same name as another timer. 4. Each form field should have appropriate validation.</p>
+<p><strong>Subtasks:</strong> 
+<ol>
+  <li>I want to navigate to the “Pomodoro creation” form with the URL path of “/productivity/edit/:pomo_id” by clicking an appropriately placed create button/icon.</li>
+  <ol type="a"><li><em>Hint:</em> Since you are creating the Pomodoro, you will not have an id yet. Consider using a “default” id to handle creating new Pomodoros.</li></ol>
+  <li>I want my timers to have a unique integer id, names, descriptions, “work session” lengths, and “break session” lengths so I can properly define and distinguish my timers from each other.</li>
+  <li>I should see a success message after I create a new Pomodoro.</li></ol>
+
+<p><strong>Technical Requirements:</strong>
+  <ol><li>The integer id generated for the timers should increment such that the first timer created has an id of 1, the next has an id of 2, and so on.</li>
+    <ol type="a"><li>You will have to determine a way to do this manually!</li></ol>
+    <li>You should add the extra id, name, and description fields without editing the provided Pomodoro file.</li>
+    <li>A user should not be able to create a timer with the same name as another timer.</li>
+    <li>Each form field should have appropriate validation.</li>
+  </ol>
+
 <h3 id="story-c">Story C</h3>
 <p>As any persona, I want to be able to view my created timers so I can start, pause, and restart them as needed.</p>
-<p><strong>Subtasks:</strong> 1. I want to view my timers on the Productivity Page created in Story A with the URL path ‘/productivity’. 2. I want each of my timers to have a consistent user interface that displays the name, description, and time remaining for each timer. 3. I want each timer to have a start/resume button to begin the countdown or continue running the countdown after it has been paused. 4. I want each timer to have a pause button to pause the countdown.</p>
-<p><strong>Technical Requirements:</strong> 1. There should not be a separate button for starting and resuming, even though the methods called for start vs. resume are distinct. a. You may choose to make separate buttons first to ensure you have implemented the functionality correctly, but there should only be one button in your final product. 2. The component for a single timer should be a reusable widget. Please refer to Ajay’s reading on widgets to determine how to do this. 3. The state of each timer should be accurate at any point in time, especially while running. 4. A user should only be able to view their own timers.</p>
+<p><strong>Subtasks:</strong> 
+  <ol>
+    <li>I want to view my timers on the Productivity Page created in Story A with the URL path ‘/productivity’.</li>
+    <li>I want each of my timers to have a consistent user interface that displays the name, description, and time remaining for each timer.</li>
+    <li>I want each timer to have a start/resume button to begin the countdown or continue running the countdown after it has been paused.</li>
+    <li>I want each timer to have a pause button to pause the countdown.</li></ol>
+<p><strong>Technical Requirements:</strong>
+  <ol>
+    <li>There should not be a separate button for starting and resuming, even though the methods called for start vs. resume are distinct.</li>
+    <ol type="a"><li>You may choose to make separate buttons first to ensure you have implemented the functionality correctly, but there should only be one button in your final product.</li></ol>
+    <li>The component for a single timer should be a reusable widget. Please refer to Ajay’s reading on widgets to determine how to do this.</li>
+    <li>The state of each timer should be accurate at any point in time, especially while running.</li>
+    <li>A user should only be able to view their own timers.</li></ol>
 <h3 id="story-d">Story D</h3>
 <p>As any persona, I want to be able to modify details about my timers.</p>
-<p><strong>Subtasks:</strong> 1. I want to navigate to the “Pomodoro editor” form with the URL path of “/productivity/edit/:pomo_id” by clicking an appropriately placed edit button/icon.</p>
-<p><strong>Technical Requirements:</strong> 1. Editing a timer should completely reset the countdown time. 2. The editor for a Pomodoro timer should be the same component as the form for creating a Pomodor timer. <em>You should not have separate Typescript (TS) files for editing and creating Pomodoros.</em> 3. Each form field should have appropriate validation.</p>
+<p><strong>Subtasks:</strong> 
+  <ol>
+    <li>I want to navigate to the “Pomodoro editor” form with the URL path of “/productivity/edit/:pomo_id” by clicking an appropriately placed edit button/icon.</li></ol>
+<p><strong>Technical Requirements:</strong>
+  <ol>
+    <li>Editing a timer should completely reset the countdown time.</li>
+    <li>The editor for a Pomodoro timer should be the same component as the form for creating a Pomodor timer. <em>You should not have separate Typescript (TS) files for editing and creating Pomodoros.</em></li>
+    <li>Each form field should have appropriate validation.</li></ol>
 <h3 id="story-e">Story E</h3>
 <p>As any persona, I want to be able to delete timers I no longer want to use by clicking an appropriately placed delete button/icon.</p>
-<p><strong>Technical Requirements:</strong> 1. Deleting a timer should automatically update the viewable list/grid of Pomodoro timers displayed on the Productivity Page.</p>
+<p><strong>Technical Requirements:</strong> 
+  <ol><li>Deleting a timer should automatically update the viewable list/grid of Pomodoro timers displayed on the Productivity Page.</li></ol>
 <hr />
 <h2 id="overall-technical-requirements">Overall Technical Requirements</h2>
 <ol type="1">
@@ -127,7 +166,7 @@
 <li>Find your Team Name and paired partner on the sheet linked to from the Canvas announcement.</li>
 <li>Lookup their contact information in the <a href="https://directory.unc.edu">UNC Directory</a> if you do not have it already.</li>
 <li>E-mail them, if they have not e-mailed you already, and propose some of the next possible dates and times you can get together to pair program!</li>
-<li>Once together, follow the setup instructions <a href="./ex01-pomodoro-setup.md">linked here</a>.</li>
+<li>Once together, follow the setup instructions <a href="./ex01-pomodoro-setup.html">linked here</a>.</li>
 </ol>
 <h2 id="final-submission---build-and-deploy-strategy-for-github-pages">Final Submission - Build and Deploy Strategy for GitHub Pages</h2>
 <p>These steps are not necessary to follow until your project is ready for submission. The workflow for collaborating with your partner is above.</p>

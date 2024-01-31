@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> EX01 Pomodoro Frontend Setup - COMP423 - 23S</title>
+  <title> EX01 Pomodoro Frontend Setup - COMP423 - 24S</title>
   <link rel="icon" type="image/png" href="/static/tabbrand.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -61,10 +61,18 @@
             </div>
         </div>
         <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="initialize-the-csxl-repository">Initialize The CSXL Repository</h2>
+<p>On your host machine, as was started in class, follow these instructions:</p>
 <ol type="1">
-<li>On your host machine, as was started in class, follow these instructions:</li>
+  <li>From VSCode, Open a new Window</li>
+  <li>Command Palette &gt; Git Clone: https://github.com/unc-csxl/csxl.unc.edu.git</li>
+  <li>After cloning DO NOT follow automated suggestions! INSTEAD:</li>
+  <ol>
+    <li>Open docs/get_started.md.</li> 
+    <li>Follow Before Starting a DevContainer: Establish a .env File.</li>
+  </ol>
+  <li>After starting the container, complete the getting started steps.</li>
 </ol>
-<p>A. From VSCode, Open a new Window B. Command Palette &gt; Git Clone: https://github.com/unc-csxl/csxl.unc.edu.git C. After cloning DO NOT follow automated suggestions! FIRST: 1. Open docs/get_started.md 2. Follow Before Starting a DevContainer: Establish a .env File D. After starting the container, complete the getting started steps</p>
+
 <h2 id="setup-team-on-github-classroom">Setup Team on GitHub Classroom</h2>
 <ol type="1">
 <li><p>One member of the team should carefully create the team. Only one member needs to take this step <em>first</em>. Create a team named “EX01 NN” where the NN is the TEAM NUMBER of your group on the pairings page sent out via Canvas. Check it closely! Accept the assignment on behalf of your team and, after refreshing, it will create a repository at <code>github.com/comp423-24s/csxl-ex01-pomodoro-front-end-team-NN</code>. Assignment acceptance link: <a href="https://classroom.github.com/a/RDhFwB_E" class="uri">https://classroom.github.com/a/RDhFwB_E</a></p></li>
@@ -72,10 +80,10 @@
 </ol>
 <h2 id="add-team-remote-to-csxl-repository">Add Team Remote to CSXL Repository</h2>
 <ol type="1">
-<li><p>In a terminal from the VSCode Devcontainer, let’s reconfigure our remotes: A. <code>git remote rm origin</code> - Removes the csxl origin remote B. <code>get remote add origin &lt;your team repo here&gt;</code> - Adds your team’s repo as the new origin C. <code>git push origin main</code> - Pushes to your team remo’s main branch (You should now see code show up on GitHub in your team project repo) D. <code>git remote add upstream https://github.com/unc-csxl/csxl.unc.edu.git</code> - Adds</p></li>
+<li><p>In a terminal from the VSCode Devcontainer, let’s reconfigure our remotes: A. <code>git remote rm origin</code> - Removes the csxl origin remote B. <code>git remote add origin &lt;your team repo here&gt;</code> - Adds your team’s repo as the new origin C. <code>git push origin main</code> - Pushes to your team remo’s main branch (You should now see code show up on GitHub in your team project repo) D. <code>git remote add upstream https://github.com/unc-csxl/csxl.unc.edu.git</code> - Adds</p></li>
 <li><p>Fetch all branches from <code>upstream</code> and checkout:</p>
 <ul>
-<li><code>get fetch --all</code></li>
+<li><code>git fetch --all</code></li>
 <li><code>git checkout --track upstream/comp423/ex01-pomodoro-frontend</code></li>
 </ul></li>
 <li><p>Push the <code>comp423/ex01-pomodoro-frontend</code> branch to the <code>origin</code> remote (your team’s repository): <code>git push origin comp423/ex01-pomodoro-frontend</code></p></li>
