@@ -61,14 +61,14 @@
             </div>
         </div>
         <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="initialize-the-csxl-repository">Initialize The CSXL Repository</h2>
-<p>On your host machine, as was started in class, follow these instructions:</p>
+<p>On your host machine, as was started in class, both team members should follow these instructions:</p>
 <ol type="1">
   <li>From VSCode, Open a new Window</li>
   <li>Command Palette &gt; Git Clone: https://github.com/unc-csxl/csxl.unc.edu.git</li>
   <li>After cloning DO NOT follow automated suggestions! INSTEAD:</li>
   <ol>
-    <li>Open docs/get_started.md.</li> 
-    <li>Follow Before Starting a DevContainer: Establish a .env File.</li>
+    <li>Open docs/get_started.md (https://github.com/unc-csxl/csxl.unc.edu/blob/main/docs/get_started.md)</li> 
+    <li>Follow Before Starting a DevContainer: Establish a .env File. Your DevContainer will not run otherwise!</li>
   </ol>
   <li>After starting the container, complete the getting started steps.</li>
 </ol>
@@ -80,7 +80,13 @@
 </ol>
 <h2 id="add-team-remote-to-csxl-repository">Add Team Remote to CSXL Repository</h2>
 <ol type="1">
-<li><p>In a terminal from the VSCode Devcontainer, let’s reconfigure our remotes: A. <code>git remote rm origin</code> - Removes the csxl origin remote B. <code>git remote add origin &lt;your team repo here&gt;</code> - Adds your team’s repo as the new origin C. <code>git push origin main</code> - Pushes to your team remo’s main branch (You should now see code show up on GitHub in your team project repo) D. <code>git remote add upstream https://github.com/unc-csxl/csxl.unc.edu.git</code> - Adds</p></li>
+<li><p>In a terminal from the VSCode Devcontainer, let’s reconfigure our remotes: 
+  <ol type=A>
+    <li><code>git remote rm origin</code> - Removes the csxl origin remote</li>
+    <li><code>git remote add origin &lt;your team repo here&gt;</code> - Adds your team’s repo as the new origin</li>
+    <li><code>git push origin main</code> - Pushes to your team repo’s main branch (You should now see code show up on GitHub in your team project repo)</li>
+    <li><code>git remote add upstream https://github.com/unc-csxl/csxl.unc.edu.git</code> - Adds the CSXL repo as the upstream "source" for your project which can be fetched from</li>
+  </ol>
 <li><p>Fetch all branches from <code>upstream</code> and checkout:</p>
 <ul>
 <li><code>git fetch --all</code></li>
@@ -92,6 +98,7 @@
 <li><code>git switch --create stage</code></li>
 <li><code>git push origin stage</code></li>
 </ul></li>
+<li>Note that since the .env file is specific to each repository, you will need to recreate it before you can run the dev container! Refer back to the docs/get_started.md file as needed.</li>
 </ol>
 <h2 id="github-repository-configuration">GitHub Repository Configuration</h2>
 <p>After the team repository has been initialized, setup the following repository branch settings in GitHub:</p>
