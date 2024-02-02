@@ -80,6 +80,7 @@
 </ol>
 <h2 id="add-team-remote-to-csxl-repository">Add Team Remote to CSXL Repository</h2>
 <ol type="1">
+  <li>Be sure to clone into your team assignment repository! From this point onward, you should only be working in that repo, not the "main" CSXL repo.</li>
 <li><p>In a terminal from the VSCode Devcontainer, let’s reconfigure our remotes: 
   <ol type=A>
     <li><code>git remote rm origin</code> - Removes the csxl origin remote</li>
@@ -98,7 +99,7 @@
 <li><code>git switch --create stage</code></li>
 <li><code>git push origin stage</code></li>
 </ul></li>
-<li>Note that since the .env file is specific to each repository, you will need to recreate it before you can run the dev container! Refer back to the docs/get_started.md file as needed.</li>
+<li>Only one team member needs to do complete the steps above. However, since the .env file is specific to each repository, <b>both members will need to recreate it before you can run the dev container</b>! Refer back to the docs/get_started.md file as needed.</li>
 </ol>
 <h2 id="github-repository-configuration">GitHub Repository Configuration</h2>
 <p>After the team repository has been initialized, setup the following repository branch settings in GitHub:</p>
