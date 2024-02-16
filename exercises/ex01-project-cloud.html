@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1708106014.038247">
+  <link rel="stylesheet" href="/static/styles.css?v=1708110599.8538291">
 </head>
 
 <body>
@@ -154,7 +154,7 @@
 <p>To avoid accidentally commiting secrets to a project, one strategy is to be sure the filenames containing the secrets are added to the project’s <code>.gitignore</code>. This file lists patterns that will not be included by default. Go ahead confirm the following rule is in the project’s <code>.gitignore</code> file:</p>
 <p><code>deploy_key*</code></p>
 <p>Go ahead and make a commit with this change to <code>.gitignore</code> included in the commit.</p>
-<p><strong>DEVCONTAINER:</strong> Back in your DevContainer’s terminal, not your host’s, generate an SSH key:</p>
+<p><strong>DEVCONTAINER:</strong> In your DevContainer’s terminal, not your host’s, generate an SSH key:</p>
 <pre><code>ssh-keygen -t ed25519 -C &quot;GitHub Deploy Key&quot; -f ./deploy_key</code></pre>
 <p>Note: <strong>Do NOT set a passphrase for the ssh key, just press enter at the prompt without typing anything when asked.</strong></p>
 <p>You should now see the files <code>deploy_key</code>, which is the private/secret key, and <code>deploy_key.pub</code> which is the public key.</p>
@@ -178,7 +178,6 @@
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">oc</span> secrets link builder comp590-ex01-deploykey</span></code></pre></div>
 <p>This command will succeed silently.</p>
 <h3 id="create-the-openshift-application">Create the OpenShift Application</h3>
-<p>Back in your host’s terminal, since it has the <code>oc</code> command installed, run the following commands to create the application in OpenShift.</p>
 <p>IMPORTANT: Be sure you substitute your team’s information in TWO places below! First: the repository URL, second the HOST variable should not be <code>ex01-team-XX</code>, but should instead be your team number.</p>
 <p>Team numbers can be found here: <a href="https://docs.google.com/spreadsheets/d/1i3faE45F3FvrzqfJgS2DqdjPTftaNUQ_cDk6cgfM3j4/edit#gid=0" class="uri">https://docs.google.com/spreadsheets/d/1i3faE45F3FvrzqfJgS2DqdjPTftaNUQ_cDk6cgfM3j4/edit#gid=0</a></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">oc</span> new-app python:3.11~git@github.com:comp590-24s/<span class="op">&lt;</span>your-final_repo_name<span class="op">&gt;</span>.git#stage <span class="kw">\</span></span>
