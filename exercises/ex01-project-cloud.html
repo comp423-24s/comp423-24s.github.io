@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1708110599.8538291">
+  <link rel="stylesheet" href="/static/styles.css?v=1708110839.7517695">
 </head>
 
 <body>
@@ -180,7 +180,7 @@
 <h3 id="create-the-openshift-application">Create the OpenShift Application</h3>
 <p>IMPORTANT: Be sure you substitute your team’s information in TWO places below! First: the repository URL, second the HOST variable should not be <code>ex01-team-XX</code>, but should instead be your team number.</p>
 <p>Team numbers can be found here: <a href="https://docs.google.com/spreadsheets/d/1i3faE45F3FvrzqfJgS2DqdjPTftaNUQ_cDk6cgfM3j4/edit#gid=0" class="uri">https://docs.google.com/spreadsheets/d/1i3faE45F3FvrzqfJgS2DqdjPTftaNUQ_cDk6cgfM3j4/edit#gid=0</a></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">oc</span> new-app python:3.11~git@github.com:comp590-24s/<span class="op">&lt;</span>your-final_repo_name<span class="op">&gt;</span>.git#stage <span class="kw">\</span></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">oc</span> new-app python:3.11~git@github.com:comp423-24s/<span class="op">&lt;</span>your-final_repo_name<span class="op">&gt;</span>.git#stage <span class="kw">\</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>  <span class="ex">--source-secret</span>=comp590-ex01-deploykey <span class="kw">\</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>  <span class="ex">--name</span>=ex01 <span class="kw">\</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>  <span class="ex">--strategy</span>=docker <span class="kw">\</span></span>
