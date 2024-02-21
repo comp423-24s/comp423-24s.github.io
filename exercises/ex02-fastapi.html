@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> EX02 - FastAPI Tutorial - COMP423 - 23S</title>
+  <title> EX02 - FastAPI Backend - COMP423 - 23S</title>
   <link rel="icon" type="image/png" href="/static/tabbrand.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1708110840.0966287">
+  <link rel="stylesheet" href="/static/styles.css?v=1708530683.5744457">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
   <div id="exercises-page" class="container">
     <div class="row pt-4">
       <div class="col-12">
-        <h2>EX02 - FastAPI Tutorial</h2>
+        <h2>EX02 - FastAPI Backend</h2>
         <hr class="title" />
       </div>
     </div>
@@ -50,49 +50,148 @@
                 <div id="overview-links">
                     <div id="TOC" role="doc-toc">
                         <ul class="overview-item"><ul>
-<li><a href="#chrome-extension">Chrome Extension</a></li>
-<li><a href="#development-container-setup">Development Container Setup</a></li>
-<li><a href="#project-dependencies-setup">Project Dependencies Setup</a></li>
-<li><a href="#fastapi-tutorial---user-guide">FastAPI Tutorial - User Guide</a></li>
-<li><a href="#submission">Submission</a></li>
-</ul>
-</</ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#workflow-expectations">Workflow Expectations</a></li>
+<li><a href="#</ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>In this exercise, you will follow the initial parts of the FastAPI tutorial to get up-to-speed with some of its capabilities. FastAPI is a leading, modern framework for developing backend APIs in Python.</p>
-<p>Unlike with Angular, where your work was effectively all loaded into a web browser and the browser was responsible for “running” the client application, with FastAPI you will be implementing server-side functionality. When your server is running, it is within the container. Using your web browser, or other tools such as <code>curl</code>, you can then make requests <em>to</em> your server and the server will respond. Ultimately, this tutorial is showing you some of the framework’s capabilities but not really following the development of a “real” (fake) application.</p>
-<p>When working through this tutorial, you should remember two important things. Ultimately, the functions you implement on the backend will be less trivial and will be responsible for <em>persisting</em> or <em>retrieving</em> data to and from a database. Additionally, more work will need to be done in the <em>front-end</em> of an application, like your Angular client, in order to depend upon a server API. In the next step of our check-in mini app, you will write code that creates requests from Angular to the API server. Then, once this is working, we will add data persistence in a data layer. Building <em>systems</em> typically involves many layers interacting with one another.</p>
-<h2 id="chrome-extension">Chrome Extension</h2>
-<p>You will implement a backend API that uses JSON as its request and response body encoding format. To improve the viewing experience of JSON content in your web browser, you are encouraged to install the following popular <a href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa">Chrom JSON Formatter browser extension</a>.</p>
-<h2 id="development-container-setup">Development Container Setup</h2>
+        <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="introduction">Introduction</h1>
+<p>In this exercise, you will begin to build out the backend that powers the Pomodoro Timer feature you all worked on in EX01. Specifically, you will build out the REST APIs for fetching, creating, updating, and deleting Pomodoro timer data. Then, you will connect your new APIs to an Angular frontend. This exercise will allow you to become more comfortable working with APIs and understand how the backend for the UNC CS Experience Lab site is set up.</p>
+<p>Be sure to scan the <strong><em>entire</em></strong> full write up (especially the technical requirements) before you begin writing code to ensure that you adhere to all of the outlined specifications.</p>
+<h1 id="setup">Setup</h1>
+<p>For this assignment, you will continue to work in your team’s EX01 repository.</p>
+<p>In a terminal from the VSCode Devcontainer, let’s reconfigure our remotes</p>
+<p>A. <code>git remote add ex02 https://github.com/comp423-24s/ex02-starter.git</code> - Adds the EX02 starter code repository as a remote to your repository.</p>
+<p>B. Fetch all branches from upstream, checkout, and push to your main repository.</p>
+<ul>
+<li><code>get fetch --all</code></li>
+<li><code>git checkout --track ex02/ex02-starter</code></li>
+<li><code>git push origin ex02</code></li>
+</ul>
+<p>From this point on, you will complete your project off of the <code>ex02</code> branch. You may branch off of <code>ex02</code> for each task, then merge back into <code>ex02</code> once completed. We will grade off of your <code>ex02</code> branch.</p>
+<h1 id="workflow-expectations">Workflow Expectations</h1>
+<p>Pair Program, ideally in person, on each of the stories. Do so in work-in-progress branches that get pushed to your team’s repository and merged back into the main branch. Each member of the pair should be the commit author for at least one of the subtasks (unless there is only 1 subtask!). You should create a branch per story and a commit per subtask completion. Once all subtasks are complete, merge the story’s commits back into stage.</p>
+<p>Once finished with a story, the “driving” partner should create a pull request for the completion of the story, and the “navigating” partner should review it and merge it into main via GitHub’s interface. Each partner should create at least two pull requests, and each partner must merge two pull requests from the other partner. For reference on pull requests see Creating a pull request and merging a pull request.</p>
+<h1 id="navigating-the-backend">Navigating the Backend</h1>
+<h2 id="the-file-structure">The File Structure</h2>
+<p>In EX01, you familiarized yourself with the <code>/frontend</code> directory. The <code>/frontend</code> directory stores your frontend Angular web application.</p>
+<p>As you would expect, the <code>/backend</code> directory holds all of the code powering the backend of the CSXL site. There are a lot of files and subdirectories here! Below is a short summary for you to orient yourself with the <code>/backend</code> folder structure:</p>
+<ul>
+<li><p><strong><code>main.py</code></strong>: This is the entry-point of the backend application and stores the FastAPI application (called <code>app</code> in the file). When we run the <code>honcho start</code> command in terminal, it kicks off many processes, including <code>uvicorn --port=1561 --reload backend.main:app</code>. This command effectively boots up our FastAPI application, allowing us to access and use the APIs we create.</p></li>
+<li><p><strong><code>/api</code></strong>: This folder contains all of our FastAPI API functions and therefore all our API functionality. You will notice that <code>main.py</code> <em>imports</em> all of these API files and stores them in a list called <code>feature_apis</code> (lines 64:82). When you want to create new APIs, you will need to import your new file into <code>main.py</code> and add it to this <code>feature_apis</code> list so that your API will route properly.</p></li>
+<li><p><strong><code>/models</code></strong>: This folder contains all of your Pydantic Model classes. Remember that we use Pydantic models to represent the shape of data your APIs expect to work with.</p></li>
+<li><p><strong><code>/services</code></strong>: This folder contains all of your backend service classes. Backend services are to FastAPI as frontend services are to components - they help to abstract functionality to include business logic. Backend services are neatly bundled, which makes it super convenient to test.</p></li>
+<li><p><strong><code>/test</code></strong>: Speaking of testing, this folder contains Pytest unit tests that allow us to ensure our code is working as expected.</p></li>
+<li><p><em><code>/entities</code>, <code>/migrations</code>, and <code>/script</code></em>: These folders are very important, but we will not be using them until the next exercise!</p></li>
+</ul>
+<h2 id="the-pomodorotimer-pydantic-model">The <code>PomodoroTimer</code> Pydantic Model</h2>
+<p>Recall that Pydantic Models are responsible for specifying the data your APIs expect to work with. For this project, we will be working with data for Pomodoro timers. So, our model needs to store the same data we were working with in EX01, including an ID, the timer’s name and description, and the length of the timer’s working and break times.</p>
+<p>For simplicity, this model has been defined for you in <code>/backend/models/pomodorotimer.py</code>. The code for this model has been shown below:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">class</span> PomodoroTimer(BaseModel):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="bu">id</span>: <span class="bu">int</span> <span class="op">|</span> <span class="va">None</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    name: <span class="bu">str</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    description: <span class="bu">str</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    timer_length: <span class="bu">int</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    break_length: <span class="bu">int</span></span></code></pre></div>
+<p>Do note that in the future, when you are working on your own projects, you will need to construct your own Pydantic Models for the data you are trying to work with! Next, let’s take a look at how we are storing this pomodoro timer data.</p>
+<h2 id="the-productivityservice">The <code>ProductivityService</code></h2>
+<p>Before you get started with the exercise, it is important that you have a good understanding on how the backend <code>ProductivityService</code> works. This class is located in <code>/backend/services/productivity.py</code>.</p>
+<p>This file exposes a global <code>_timers</code> dictionary which serves as the backend timer storage for this exercise. This dictionary stores timer data such that the <em>key</em>s of the dictionary are Timer IDs, and the values are objects of type <code>PomodoroTimer</code> - the Pydantic Model we defined earlier. So, here is an example of the data that <code>_timers</code> might store:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>{</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    <span class="dv">1</span>: PomodoroTimer(<span class="bu">id</span>: <span class="dv">1</span>, name: <span class="st">&quot;Hello&quot;</span>, description: <span class="st">&quot;World&quot;</span>, timer_length: <span class="dv">10</span>, break_length: <span class="dv">5</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>    <span class="dv">2</span>: PomodoroTimer(<span class="bu">id</span>: <span class="dv">2</span>, name: <span class="st">&quot;Another&quot;</span>, description: <span class="st">&quot;One&quot;</span>, timer_length: <span class="dv">20</span>, break_length: <span class="dv">4</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>}</span></code></pre></div>
+<p>With data stored this way, we can access any timer by its ID by calling <code>_timers[id]</code>. We also have an internal <code>_timer_id</code> variable, which incremenets each time a new timer is created, so that each timer has its own unique ID.</p>
+<p>Now, <strong><em>thoroughly</em> read through</strong> the code provided and try to understand how it works. The functions in the backend <code>ProductivityService</code> just perform read, create, edit, and deleting operations. You will need to implement the <em>editing</em> functionality of the service in this exercise, then use all of the service functions to create your own APIs.</p>
+<h1 id="technical-requirements">Technical Requirements</h1>
+<p>For this exercise, there are a series of tasks you will need to complete <em>in order</em>. Make sure to read the instructions carefully.</p>
+<h2 id="task-1-complete-the-backend-productivityservice.">Task 1: Complete the Backend <code>ProductivityService</code>.</h2>
+<p>The backend <code>ProductivityService</code> has almost been completed for you, but you must implement the <code>update_timer()</code> method. Complete all of the <code>TODO</code> items listed in the comment in the <code>update_timer()</code> method.</p>
+<p><strong>Requirements:</strong></p>
 <ol type="1">
-<li>Clone the repository we setup as a sandbox for this exercise: https://github.com/comp423-23f/ex02-sandbox.git</li>
-<li>This is a bare bones setup that includes the latest verison of <code>python</code> (3.11) and <code>pip</code>, Python’s package manager.</li>
-<li>Open the repository in a DevContainer. This will build the image.</li>
+<li>The method must update the correct timer in the backend. The number of elements in <code>_timers</code> before and after this operation should remain the same.</li>
+<li>Throw the correct HTTP exception if the user tries to edit a timer that does not exist.</li>
+<li>The method should return the model for the updated timer.</li>
 </ol>
-<h2 id="project-dependencies-setup">Project Dependencies Setup</h2>
-<p>Like <code>node.js</code>’s <code>package.json</code>, Python’s <code>requirements.txt</code> is a standard means for specifying external dependencies in Python. Here we are “pegging” the version on a specific major/minor version using <a href="https://semver.org/">semantic versioning</a>.</p>
-<p>Add a <code>requirements.txt</code> file to the project’s root directory with the contents below:</p>
-<pre><code>fastapi[all] &gt;=0.103.1, &lt;0.104.0</code></pre>
-<p>The <code>fastapi[all]</code> pip package has all the dependencies needed to get started with a FastAPI application, such as the performant Python web server that we’ll use to host the backend <code>uvicorn</code>.</p>
-<p>To install the dependencies in this file, we’ll use Python’s de facto package management tool <code>pip</code>. Start a new terminal in your VSCode instance and run the following command:</p>
-<p><code>pip install -r requirements.txt</code></p>
-<p>The <code>-r</code> option indicates the installation of dependencies will be guided by a file in the standard <code>requirements.txt</code> format.</p>
-<h2 id="fastapi-tutorial---user-guide">FastAPI Tutorial - User Guide</h2>
-<p>You are now ready to begin the <a href="https://fastapi.tiangolo.com/tutorial/first-steps/">FastAPI User Guide’s standard tutorial</a>. For this exercise, there are a few things you should know while you are working through the following four sections:</p>
+<h2 id="task-2-write-unit-tests-for-productivityservice.update_timer.">Task 2: Write Unit Tests for <code>ProductivityService.update_timer()</code>.</h2>
+<p>Tests already exist for all of the other method of <code>ProductivityService</code>. These tests can be found in the <code>/backend/test/services/productivity_test.py</code> file.</p>
+<p>Now, it is your turn to write PyTests for your new <code>.update_timer()</code> method! Carefully read through the tests for fetching, adding, and deleting timers. Note that all of the test functions inject a <code>ProductivityService</code>. Using what you see in the other provided tests, write at least two test functions that test your function in a variety of scenarios. If you are unfamiliar with PyTest, feel free to check out the <a href="https://docs.pytest.org/en/7.1.x/contents.html">Official PyTest Docs</a>.</p>
+<p><em>Hint: Look at the “Requirements” section of Task 1! Ideally, your tests should ensure that all of these requirements are met.</em></p>
+<p><strong>Requirements:</strong></p>
 <ol type="1">
-<li>First Steps</li>
-<li>Path Parameters</li>
-<li>Query Parameters</li>
-<li>Request Body</li>
+<li>Write at least two test methods that ensure all requirements of Task 1 are met.</li>
+<li>All of your tests should pass.</li>
 </ol>
-<p>First, the examples along these parts of the tutorial appear “destructive” in the sense that at each new step it looks like only one function and route remains in the application. For the purposes of this exercise, you should be <em>adding</em> and <em>updating</em> routes and functions where there are new routes demonstrated, not deleting routes (unless the tutorial is iterating on or improving upon the same route example).</p>
-<p>Second, you should play around with examples the tutorial gives and modifying them not just mindlessly following along, which is easy to do. As you encounter words, concepts, or ideas you are unfamiliar with, you should search around and try to come to a cursory understanding of what it is referring to. Try asking ChatGPT to explain something to you!</p>
-<p>Finally, there are Gradescope questions which check for understanding along the way and a few activity extensions to complete.</p>
-<h2 id="submission">Submission</h2>
-<p>The only submission for this exercise is the Gradescope on-line assignment. You do not need to create a repository or push.</p>
+<h2 id="task-3-write-the-productivity-features-apis">Task 3: Write the Productivity Feature’s APIs</h2>
+<p>Your next task is to implement all of the Productivity Feature’s APIs! You will implement your FastAPI API functions in the <code>/backend/api/productivity.py</code> file.</p>
+<p>In this file, you will notice 5 <code># TODO</code> comments specifying the API you need to create. Beneath each comment, implement these APIs. Make use of the service functions you were just working on!</p>
+<p>Note that when you run <code>honcho start</code>, you can navigate to <code>localhost:1560/docs</code> in your browser, which shows a nice page that shows all of the FastAPI APIs implemented for your site! You should be utilizing this page to view and test out the APIs you create.</p>
+<p><strong>Requirements:</strong></p>
+<ol type="1">
+<li>Implement the following API: GET /api/productivity</li>
+<li>Implement the following API: GET /api/productivity/{id}</li>
+<li>Implement the following API: POST /api/productivity/</li>
+<li>Implement the following API: PUT /api/productivity</li>
+<li>Implement the following API: DELETE /api/productivity/{id}</li>
+<li>All my new APIs should be accessible at <code>localhost:1560/docs</code>.</li>
+<li>All my APIs work as expected when tested at <code>localhost:1560/docs</code>.</li>
+</ol>
+<h1 id="task-4-connect-the-angular-service-to-the-new-apis">Task 4: Connect the Angular Service to the New APIs</h1>
+<p>Now comes the fun part - tying everying together! Now that you have created your APIs, you will want to connect this to the frontend of your site.</p>
+<p>Recall that in EX01, your frontend service was responsible for storing and managing your data. Now, your services will serve their necessary, true role - calling APIs to access data!</p>
+<p>First though, it is important to familiarize yourself with the frontend Data Models for this project. Navigate to these models at <code>/frontend/src/app/productivity/timerdata.ts</code>.</p>
+<p>You will notice two different models - <code>TimerResponse</code> and <code>TimerData</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>export interface TimerResponse {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>  id<span class="op">:</span> <span class="dt">number</span> <span class="op">|</span> <span class="dt">null</span><span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>  name<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>  description<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>  timer_length<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>  break_length<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>export interface TimerData {</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>  id<span class="op">:</span> <span class="dt">number</span><span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a>  name<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a>  description<span class="op">:</span> <span class="dt">string</span><span class="op">;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true"></a>  timer<span class="op">:</span> PomodoroTimer<span class="op">;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true"></a>}</span></code></pre></div>
+<p>This is peculiar, because in EX01, you likely only had one model that looked like <code>TimerData</code>. However, there is a problem. Remember that APIs just send data in JSON format. Our backend has <em>no idea</em> about the functionality of the <code>PomodoroTimer</code> class in our frontend! It just sends over the <code>timer_length</code> and <code>break_length</code> data - that is it! So, when we retrieve data from our APIs, we will be working with <code>TimerReponse</code> objects instead. Ultimately though, our frontend works with <code>TimerData</code> objects. So, we need some way to convert from <code>TimerResponse</code> objects to <code>TimerData</code> objects.</p>
+<p>The data flow will eventually look something like the following:</p>
+<pre><code>Backend: `PomodoroTimer` Pydantic model
+  --- received from the API as ---&gt;
+Frontend: `TimerResponse` model
+  --- converted to ---&gt;
+Frontend: `TimerData` model</code></pre>
+<p>Navigate to the frontend <code>ProductivityService</code> at <code>/frontend/src/app/productivity/productivity.service.ts</code>.</p>
+<p>You want to utilize the <code>http</code> client to call APIs! This client is already injected into the <code>ProductivityService</code>.</p>
+<p>Like before, There are many <code>// TODO</code> comments that specify which functions you need to implement functionality for!</p>
+<p>Using a similar format to other services in the frontend application, use the <code>http</code> client to interact with the API endpoints you created on the backend.</p>
+<p>Note: The HTTP client will return data in the <code>Observable&lt;T&gt;</code> format. Since you are working with <code>TimerResponse</code> data, you will want to ultimately convert this data from the <code>TimerResponse</code> type to the <code>TimerData</code> type.</p>
+<p><em>Hint: Explore the pre-made <code>private</code> functions defined at the bottom of the page.</em> <em>Hint 2: Explore the <code>.pipe()</code> operator <a href="https://rxjs.dev/guide/operators">here</a>.</em></p>
+<p>Finally, explore the documentation above the <code>timers</code> and <code>timers$</code> fields of the class! You will need to work with these fields to store the most up-to-date list of timer values from your backend.</p>
+<p><strong>Technical Requirements:</strong></p>
+<ol type="1">
+<li>Implement all frontend service methods as specified in the comments. All should use <code>TimerResponse</code> data to interact from the API, but ultimately return data in the form of <code>Observable</code> objects of type <code>TimerData</code> (or <code>TimerData[]</code> where applicable).</li>
+<li>The <code>.getTimers()</code> method should update the internal <code>.timers$</code> observable field with the latest data once it is retrieved. <em>(Hint: Use the <code>.subscribe()</code> method)</em>.</li>
+</ol>
+<h1 id="task-5-connect-the-angular-components-to-the-data">Task 5: Connect the Angular Components to the Data</h1>
+<p>Congrats! You are almost done. The final step of this exercise is to hook up our new functionality to our components and widgets in the Angular frontend. There are a few <code>TODO:</code> comments in the TypeScript files for the <code>ProductivityComponent</code>, <code>TimerEditorComponent</code>, and the <code>TimerWidget</code>. Complete these tasks using the new service methods you created.</p>
+<p><strong>Technical Requirements:</strong></p>
+<ol type="1">
+<li>When loading the <code>ProductivityComponent</code> on the frontend, the page is updated with the timer data from the backend.</li>
+<li>Creating or editing a timer in the <code>TimerEditorComponent</code> will call the appropriate APIs from the backend.</li>
+<li>Clicking the “Delete” timer button in the <code>TimerWidget</code> will call the correct API from the backend to delete the timer.</li>
+<li>After deleting a timer, the data of the service is also refreshed.</li>
+</ol>
+<h1 id="getting-started">Getting Started</h1>
+<ol type="1">
+<li>Find your Team Name and paired partner on the sheet linked to from the Canvas announcement. Lookup their contact information in the UNC Directory if you do not have it already.</li>
+<li>E-mail them, if they have not e-mailed you already, and propose some of the next possible dates and times you can get together to pair program!</li>
+<li>Once together, follow the setup instructions.</li>
+</ol>
 </div>
 
        
