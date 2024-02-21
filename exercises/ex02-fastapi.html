@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> EX02 - FastAPI Backend - COMP423 - 23S</title>
+  <title> EX02 FastAPI Backend - COMP423 - 23S</title>
   <link rel="icon" type="image/png" href="/static/tabbrand.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1708530683.5744457">
+  <link rel="stylesheet" href="/static/styles.css?v=1708536874.8107395">
 </head>
 
 <body>
@@ -36,32 +36,16 @@
   <div id="exercises-page" class="container">
     <div class="row pt-4">
       <div class="col-12">
-        <h2>EX02 - FastAPI Backend</h2>
+        <h2>EX02 FastAPI Backend</h2>
         <hr class="title" />
       </div>
     </div>
 
-    <script src="/static/scripts/toggle-handler.js"></script>
-    
-    <div class="row px-4">
-        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
-            <div id="menu-overview" class="link-page box">
-                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
-                <div id="overview-links">
-                    <div id="TOC" role="doc-toc">
-                        <ul class="overview-item"><ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#setup">Setup</a></li>
-<li><a href="#workflow-expectations">Workflow Expectations</a></li>
-<li><a href="#</ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="introduction">Introduction</h1>
+    <div class="container">
+                <div class="content"><h2 id="overview">Overview</h2>
 <p>In this exercise, you will begin to build out the backend that powers the Pomodoro Timer feature you all worked on in EX01. Specifically, you will build out the REST APIs for fetching, creating, updating, and deleting Pomodoro timer data. Then, you will connect your new APIs to an Angular frontend. This exercise will allow you to become more comfortable working with APIs and understand how the backend for the UNC CS Experience Lab site is set up.</p>
 <p>Be sure to scan the <strong><em>entire</em></strong> full write up (especially the technical requirements) before you begin writing code to ensure that you adhere to all of the outlined specifications.</p>
-<h1 id="setup">Setup</h1>
+<h2 id="setup">Setup</h2>
 <p>For this assignment, you will continue to work in your team’s EX01 repository.</p>
 <p>In a terminal from the VSCode Devcontainer, let’s reconfigure our remotes</p>
 <p>A. <code>git remote add ex02 https://github.com/comp423-24s/ex02-starter.git</code> - Adds the EX02 starter code repository as a remote to your repository.</p>
@@ -72,11 +56,11 @@
 <li><code>git push origin ex02</code></li>
 </ul>
 <p>From this point on, you will complete your project off of the <code>ex02</code> branch. You may branch off of <code>ex02</code> for each task, then merge back into <code>ex02</code> once completed. We will grade off of your <code>ex02</code> branch.</p>
-<h1 id="workflow-expectations">Workflow Expectations</h1>
+<h2 id="workflow-expectations">Workflow Expectations</h2>
 <p>Pair Program, ideally in person, on each of the stories. Do so in work-in-progress branches that get pushed to your team’s repository and merged back into the main branch. Each member of the pair should be the commit author for at least one of the subtasks (unless there is only 1 subtask!). You should create a branch per story and a commit per subtask completion. Once all subtasks are complete, merge the story’s commits back into stage.</p>
 <p>Once finished with a story, the “driving” partner should create a pull request for the completion of the story, and the “navigating” partner should review it and merge it into main via GitHub’s interface. Each partner should create at least two pull requests, and each partner must merge two pull requests from the other partner. For reference on pull requests see Creating a pull request and merging a pull request.</p>
-<h1 id="navigating-the-backend">Navigating the Backend</h1>
-<h2 id="the-file-structure">The File Structure</h2>
+<h2 id="navigating-the-backend">Navigating the Backend</h2>
+<h3 id="the-file-structure">The File Structure</h3>
 <p>In EX01, you familiarized yourself with the <code>/frontend</code> directory. The <code>/frontend</code> directory stores your frontend Angular web application.</p>
 <p>As you would expect, the <code>/backend</code> directory holds all of the code powering the backend of the CSXL site. There are a lot of files and subdirectories here! Below is a short summary for you to orient yourself with the <code>/backend</code> folder structure:</p>
 <ul>
@@ -97,7 +81,7 @@
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    timer_length: <span class="bu">int</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    break_length: <span class="bu">int</span></span></code></pre></div>
 <p>Do note that in the future, when you are working on your own projects, you will need to construct your own Pydantic Models for the data you are trying to work with! Next, let’s take a look at how we are storing this pomodoro timer data.</p>
-<h2 id="the-productivityservice">The <code>ProductivityService</code></h2>
+<h3 id="the-productivityservice">The <code>ProductivityService</code></h3>
 <p>Before you get started with the exercise, it is important that you have a good understanding on how the backend <code>ProductivityService</code> works. This class is located in <code>/backend/services/productivity.py</code>.</p>
 <p>This file exposes a global <code>_timers</code> dictionary which serves as the backend timer storage for this exercise. This dictionary stores timer data such that the <em>key</em>s of the dictionary are Timer IDs, and the values are objects of type <code>PomodoroTimer</code> - the Pydantic Model we defined earlier. So, here is an example of the data that <code>_timers</code> might store:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>{</span>
@@ -106,9 +90,9 @@
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>}</span></code></pre></div>
 <p>With data stored this way, we can access any timer by its ID by calling <code>_timers[id]</code>. We also have an internal <code>_timer_id</code> variable, which incremenets each time a new timer is created, so that each timer has its own unique ID.</p>
 <p>Now, <strong><em>thoroughly</em> read through</strong> the code provided and try to understand how it works. The functions in the backend <code>ProductivityService</code> just perform read, create, edit, and deleting operations. You will need to implement the <em>editing</em> functionality of the service in this exercise, then use all of the service functions to create your own APIs.</p>
-<h1 id="technical-requirements">Technical Requirements</h1>
+<h2 id="technical-requirements">Technical Requirements</h2>
 <p>For this exercise, there are a series of tasks you will need to complete <em>in order</em>. Make sure to read the instructions carefully.</p>
-<h2 id="task-1-complete-the-backend-productivityservice.">Task 1: Complete the Backend <code>ProductivityService</code>.</h2>
+<h3 id="task-1-complete-the-backend-productivityservice.">Task 1: Complete the Backend <code>ProductivityService</code>.</h3>
 <p>The backend <code>ProductivityService</code> has almost been completed for you, but you must implement the <code>update_timer()</code> method. Complete all of the <code>TODO</code> items listed in the comment in the <code>update_timer()</code> method.</p>
 <p><strong>Requirements:</strong></p>
 <ol type="1">
@@ -116,7 +100,7 @@
 <li>Throw the correct HTTP exception if the user tries to edit a timer that does not exist.</li>
 <li>The method should return the model for the updated timer.</li>
 </ol>
-<h2 id="task-2-write-unit-tests-for-productivityservice.update_timer.">Task 2: Write Unit Tests for <code>ProductivityService.update_timer()</code>.</h2>
+<h3 id="task-2-write-unit-tests-for-productivityservice.update_timer.">Task 2: Write Unit Tests for <code>ProductivityService.update_timer()</code>.</h3>
 <p>Tests already exist for all of the other method of <code>ProductivityService</code>. These tests can be found in the <code>/backend/test/services/productivity_test.py</code> file.</p>
 <p>Now, it is your turn to write PyTests for your new <code>.update_timer()</code> method! Carefully read through the tests for fetching, adding, and deleting timers. Note that all of the test functions inject a <code>ProductivityService</code>. Using what you see in the other provided tests, write at least two test functions that test your function in a variety of scenarios. If you are unfamiliar with PyTest, feel free to check out the <a href="https://docs.pytest.org/en/7.1.x/contents.html">Official PyTest Docs</a>.</p>
 <p><em>Hint: Look at the “Requirements” section of Task 1! Ideally, your tests should ensure that all of these requirements are met.</em></p>
@@ -125,7 +109,7 @@
 <li>Write at least two test methods that ensure all requirements of Task 1 are met.</li>
 <li>All of your tests should pass.</li>
 </ol>
-<h2 id="task-3-write-the-productivity-features-apis">Task 3: Write the Productivity Feature’s APIs</h2>
+<h3 id="task-3-write-the-productivity-features-apis">Task 3: Write the Productivity Feature’s APIs</h3>
 <p>Your next task is to implement all of the Productivity Feature’s APIs! You will implement your FastAPI API functions in the <code>/backend/api/productivity.py</code> file.</p>
 <p>In this file, you will notice 5 <code># TODO</code> comments specifying the API you need to create. Beneath each comment, implement these APIs. Make use of the service functions you were just working on!</p>
 <p>Note that when you run <code>honcho start</code>, you can navigate to <code>localhost:1560/docs</code> in your browser, which shows a nice page that shows all of the FastAPI APIs implemented for your site! You should be utilizing this page to view and test out the APIs you create.</p>
@@ -139,7 +123,7 @@
 <li>All my new APIs should be accessible at <code>localhost:1560/docs</code>.</li>
 <li>All my APIs work as expected when tested at <code>localhost:1560/docs</code>.</li>
 </ol>
-<h1 id="task-4-connect-the-angular-service-to-the-new-apis">Task 4: Connect the Angular Service to the New APIs</h1>
+<h2 id="task-4-connect-the-angular-service-to-the-new-apis">Task 4: Connect the Angular Service to the New APIs</h2>
 <p>Now comes the fun part - tying everying together! Now that you have created your APIs, you will want to connect this to the frontend of your site.</p>
 <p>Recall that in EX01, your frontend service was responsible for storing and managing your data. Now, your services will serve their necessary, true role - calling APIs to access data!</p>
 <p>First though, it is important to familiarize yourself with the frontend Data Models for this project. Navigate to these models at <code>/frontend/src/app/productivity/timerdata.ts</code>.</p>
@@ -177,7 +161,7 @@ Frontend: `TimerData` model</code></pre>
 <li>Implement all frontend service methods as specified in the comments. All should use <code>TimerResponse</code> data to interact from the API, but ultimately return data in the form of <code>Observable</code> objects of type <code>TimerData</code> (or <code>TimerData[]</code> where applicable).</li>
 <li>The <code>.getTimers()</code> method should update the internal <code>.timers$</code> observable field with the latest data once it is retrieved. <em>(Hint: Use the <code>.subscribe()</code> method)</em>.</li>
 </ol>
-<h1 id="task-5-connect-the-angular-components-to-the-data">Task 5: Connect the Angular Components to the Data</h1>
+<h2 id="task-5-connect-the-angular-components-to-the-data">Task 5: Connect the Angular Components to the Data</h2>
 <p>Congrats! You are almost done. The final step of this exercise is to hook up our new functionality to our components and widgets in the Angular frontend. There are a few <code>TODO:</code> comments in the TypeScript files for the <code>ProductivityComponent</code>, <code>TimerEditorComponent</code>, and the <code>TimerWidget</code>. Complete these tasks using the new service methods you created.</p>
 <p><strong>Technical Requirements:</strong></p>
 <ol type="1">
@@ -186,20 +170,17 @@ Frontend: `TimerData` model</code></pre>
 <li>Clicking the “Delete” timer button in the <code>TimerWidget</code> will call the correct API from the backend to delete the timer.</li>
 <li>After deleting a timer, the data of the service is also refreshed.</li>
 </ol>
-<h1 id="getting-started">Getting Started</h1>
+<h2 id="getting-started">Getting Started</h2>
 <ol type="1">
 <li>Find your Team Name and paired partner on the sheet linked to from the Canvas announcement. Lookup their contact information in the UNC Directory if you do not have it already.</li>
 <li>E-mail them, if they have not e-mailed you already, and propose some of the next possible dates and times you can get together to pair program!</li>
 <li>Once together, follow the setup instructions.</li>
 </ol>
 </div>
-
-       
-
-    </div> 
+            </div>
 
     <div class="authors-box bg-light mt-4 py-3 ps-4">
-      <span> Contributor(s): Kris Jordan</span>
+      <span> Contributor(s):        K,        r,        i,        s,         ,        J,        o,        r,        d,        a, n</span>
     </div>
   </div>
   <div class='link-page mt-3 container'>
