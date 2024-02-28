@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1709134130.8122241">
+  <link rel="stylesheet" href="/static/styles.css?v=1709134130.3872206">
 </head>
 
 <body>
@@ -50,7 +50,6 @@
                 <div id="overview-links">
                     <div id="TOC" role="doc-toc">
                         <ul class="overview-item"><ul>
-<li><a href="#initialize-the-csxl-repository">Initialize The CSXL Repository</a></li>
 <li><a href="#setup-team-on-github-classroom">Setup Team on GitHub Classroom</a></li>
 <li><a href="#add-team-remote-to-csxl-repository">Add Team Remote to CSXL Repository</a></li>
 <li><a href="#github-repository-configuration">GitHub Repository Configuration</a></li>
@@ -60,39 +59,24 @@
                 </div>
             </div>
         </div>
-        <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="initialize-the-csxl-repository">Initialize The CSXL Repository</h2>
-<p>On your host machine, as was started in class, follow these instructions:</p>
+        <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="setup-team-on-github-classroom">Setup Team on GitHub Classroom</h2>
 <ol type="1">
-<li>From VSCode, open a new Window</li>
-<li>Command Palette &gt; Git Clone: https://github.com/unc-csxl/csxl.unc.edu.git</li>
-<li>After cloning DO NOT follow automated suggestions! FIRST:
-<ol type="a">
-<li>Open docs/get_started.md</li>
-<li>Follow Before Starting a DevContainer: Establish a .env File</li>
-</ol></li>
-<li>After starting the container, complete the getting started steps</li>
-</ol>
-<h2 id="setup-team-on-github-classroom">Setup Team on GitHub Classroom</h2>
-<ol type="1">
-<li><p>One member of the team should carefully create the team. Only one member needs to take this step <em>first</em>. Create a team named “EX01 NN” where the NN is the TEAM NUMBER of your group on the pairings page sent out via Canvas. Check it closely! Accept the assignment on behalf of your team and, after refreshing, it will create a repository at <code>github.com/comp423-24s/csxl-ex01-pomodoro-front-end-team-NN</code>. Assignment acceptance link: <a href="https://classroom.github.com/a/RDhFwB_E" class="uri">https://classroom.github.com/a/RDhFwB_E</a></p></li>
-<li><p>After completing Step 1, all other members of the team should join the correct team and accept the assignment to be added to the repository. Assignment acceptance link: <a href="https://classroom.github.com/a/RDhFwB_E" class="uri">https://classroom.github.com/a/RDhFwB_E</a></p></li>
+<li><p>One member of the team should carefully create the team. Only one member needs to take this step <em>first</em>. Create a team named “EX01 NN” where the NN is the TEAM NUMBER of your group on the pairings page sent out via Canvas. Check it closely! Accept the assignment on behalf of your team and, after refreshing, it will create a repository at <code>github.com/comp423-24s/csxl-ex01-pomodoro-front-end-team-NN</code>. Assignment acceptance link: <ADD LINK></p></li>
+<li><p>After completing Step 1, all other members of the team should join the correct team and accept the assignment to be added to the repository. Assignment acceptance link: <ADD LINK></p></li>
 </ol>
 <h2 id="add-team-remote-to-csxl-repository">Add Team Remote to CSXL Repository</h2>
 <ol type="1">
-<li><p>Be sure to clone into your team assignment repository! From this point onward, you should only be working in that repo, not the “main” CSXL repo.</p></li>
-<li><p>In a terminal from the VSCode Devcontainer, let’s reconfigure our remotes: A. <code>git remote rm origin</code> - Removes the csxl origin remote B. <code>get remote add origin &lt;your team repo here&gt;</code> - Adds your team’s repo as the new origin C. <code>git push origin main</code> - Pushes to your team remo’s main branch (You should now see code show up on GitHub in your team project repo) D. <code>git remote add upstream https://github.com/unc-csxl/csxl.unc.edu.git</code> - Adds</p></li>
-<li><p>Fetch all branches from <code>upstream</code> and checkout:</p>
-<ul>
-<li><code>get fetch --all</code></li>
-<li><code>git checkout --track upstream/comp423/ex01-pomodoro-frontend</code></li>
-</ul></li>
-<li><p>Push the <code>comp423/ex01-pomodoro-frontend</code> branch to the <code>origin</code> remote (your team’s repository): <code>git push origin comp423/ex01-pomodoro-frontend</code></p></li>
-<li><p>Your team will work off of a staging branch named <code>stage</code>, rather than the <code>comp423/ex01-pomodoro-frontend</code> branch. Go ahead and establish a <code>stage</code> branch locally and push it:</p>
-<ul>
-<li><code>git switch --create stage</code></li>
-<li><code>git push origin stage</code></li>
-</ul></li>
-<li><p>Only one team member needs to do complete the steps above. However, since the .env file is specific to each repository, <b>both members will need to recreate it before you can run the dev container</b>! Refer back to the docs/get_started.md file as needed.</p></li>
+<li>Be sure to clone into your team assignment repository! From this point onward, you should only be working in that repo, not the “main” CSXL repo.</li>
+<li>Since the <code>.env</code> file is specific to each local repository, <strong><em>both members will need to recreate it before you can run the dev container</em></strong>! Refer back to the <code>docs/get_started.md</code> file as needed.</li>
+<li>In the Docker UI, make sure to fully stop the CSXL / EX01 / EX02 containers, including the db.
+<ol type="a">
+<li>Go to Docker Desktop.</li>
+<li>Go to the Containers tab.</li>
+<li>In the actions section, if any containers are running, click the stop button.</li>
+<li>Make sure to expand the container and ensure that the db is also stopped.</li>
+</ol></li>
+<li>Make a branch off of <code>main</code> named <code>stage</code>. This is the branch you will be working off of and merging your work-in-progress branches into.</li>
+<li>Don’t forget to branch off of <code>stage</code> before starting your work!!</li>
 </ol>
 <h2 id="github-repository-configuration">GitHub Repository Configuration</h2>
 <p>After the team repository has been initialized, setup the following repository branch settings in GitHub:</p>
@@ -105,8 +89,8 @@
 </ul></li>
 <li>Change to the Branches tab in the sidebar
 <ol start="0" type="1">
-<li>Add Branch Protection Rule to prevent any pushing to <code>comp423/ex01-pomodoro-frontend</code></li>
-<li>Branch name pattern: <code>comp423/ex01-pomodoro-frontend</code></li>
+<li>Add Branch Protection Rule to prevent any pushing to <code>main</code></li>
+<li>Branch name pattern: <code>main</code></li>
 <li>(Check) Lock branch</li>
 <li>(Check) Do not allow bypassing the above settings</li>
 <li>Save Changes with Create Button</li>
