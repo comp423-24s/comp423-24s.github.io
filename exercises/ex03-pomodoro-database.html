@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1709138563.823312">
+  <link rel="stylesheet" href="/static/styles.css?v=1709221130.432589">
 </head>
 
 <body>
@@ -80,7 +80,7 @@
 <h3 id="task-1-set-up-the-pomodorotimerentity">Task 1: Set Up the <code>PomodoroTimerEntity</code></h3>
 <p>The first step to complete when it comes to creating a new table in SQLAlchemy is creating the entity for it. The file has already been set up for you, but it is up to you to complete the <code>TODO</code> items listed in the file.</p>
 <p>In order to fully and properly connect the new entity/table to the database, you will also need to modify the User Entity to finish establishing the one-to-many relationship between the two tables.</p>
-<p><strong>Technical Requirements:</strong> 1. Define the main fields of the Pomodoro Timer entity. These will correspond to the model for the Pomodoro Timer! 2. Define the foreign key to establish the one-to-many relationship between the pomodoro and user tables. 3. Complete the <code>from_model()</code> method for the entity. a. This method should take in a <code>PomodoroTimer</code> model convert it to the appropriate entity object. 4. Complete the <code>to_model()</code> method for the entity. a. This method should be called directly on the <code>PomodoroTimerEntity</code> and convert it to a <code>PomodoroTimer</code> model. 5. In the <code>user_entity.py</code> file, define the field to establish the one-to-many relationship between the pomodoro and user tables.</p>
+<p><strong>Technical Requirements:</strong> 1. Define the main fields of the Pomodoro Timer entity. These will correspond to the model for the Pomodoro Timer! 2. Define the foreign key to establish the one-to-many relationship between the pomodoro and user tables. 3. Complete the <code>from_model()</code> method for the entity. a. This method should take in a <code>PomodoroTimer</code> model convert it to the appropriate entity object. 5. Complete the <code>to_model()</code> method for the entity. a. This method should be called directly on the <code>PomodoroTimerEntity</code> and convert it to a <code>PomodoroTimer</code> model. 7. In the <code>user_entity.py</code> file, define the field to establish the one-to-many relationship between the pomodoro and user tables.</p>
 <h3 id="task-2-update-the-service-methods-for-users">Task 2: Update the Service Methods for Users</h3>
 <p>Now that we have the entity set up, we may continue on to updating the service methods! Since the API routes simply call on the service methods, we don’t need to make any changes to those.</p>
 <p>However, because we would like to ensure that only the user that created the timer can view/edit/delete it, we do need to update the code in a few ways to allow for this permission check.</p>
@@ -129,12 +129,12 @@
 <li>Run <code>python3 -m backend.script.reset_demo</code>. This will delete and recreate the database and load it with the development data defined in the repository.</li>
 <li>Run <code>honcho start</code>.</li>
 <li>Test the individual backend methods using the <code>localhost:1560/docs</code>, just as you did in EX02.</li>
-<li>As described in the <code>docs/get_started.md</code> file, you can log in as various mock users to test your code.
+<li>As described in the <code>docs/get_started.md</code> file, you can log in as various mock users to test your code.</li>
+</ol>
 <ol type="a">
 <li>Log in as Sally Student by appending <code>/auth/as/sally/111111111</code> to the <code>localhost:1560</code> path (be sure that there is nothing following the root path when you do this). There should be three test timers already populated from Task #4. Create, edit, and delete some timers to ensure that everything is working properly.</li>
 <li>Log in as Rhonda Rhoot by appending <code>/auth/as/root/999999999</code> to the path. Note that Sally Student’s timers should not appear on Rhonda’s page! Create, edit, and delete timers.</li>
 <li>Log in as Sally Student again and ensure that Rhonda’s changes do not affect Sally’s page.</li>
-</ol></li>
 </ol>
 <p>If everything is working, congratulations! You have created a new feature for the CSXL with a fully-developed frontend and backend. Great work!</p>
 <h2 id="getting-started">Getting Started</h2>
