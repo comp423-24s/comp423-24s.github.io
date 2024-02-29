@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1709221309.679266">
+  <link rel="stylesheet" href="/static/styles.css?v=1709248047.486536">
 </head>
 
 <body>
@@ -89,10 +89,20 @@
 <p><strong>Requirements:</strong></p>
 <ol type="1">
 <li>Update each service method in <code>productivity.py</code> to take in <code>subject</code> as a parameter. Pay close attention to the order that the API routes input the parameters in.</li>
-<li>Raise an exception in <code>get_timer()</code> if the user attempting to get the timer with the given id is not the same as the user associated with the timer.</li>
-<li>Raise an exception in <code>update_timer()</code> if the user attempting to update the timer with the given id is not the same as the user associated with the timer.</li>
-<li>Raise an exception in <code>delete_timer()</code> if the user attempting to delete the timer with the given id is not the same as the user associated with the timer.</li>
+<li>Raise a <code>UserPermissionException</code> in <code>get_timer()</code> if the user attempting to get the timer with the given id is not the same as the user associated with the timer.
+<ul>
+<li>Raise this exception as follows: <code>UserPermissionException("productivity.view", f"productivity/{timer_id}")</code>.</li>
+</ul></li>
+<li>Raise a <code>UserPermissionException</code> in <code>update_timer()</code> if the user attempting to update the timer with the given id is not the same as the user associated with the timer.
+<ul>
+<li>Raise this exception as follows: <code>UserPermissionException("productivity.update", f"productivity/{timer_id}")</code>.</li>
+</ul></li>
+<li>Raise a <code>UserPermissionException</code> in <code>delete_timer()</code> if the user attempting to delete the timer with the given id is not the same as the user associated with the timer.
+<ul>
+<li>Raise this exception as follows: <code>UserPermissionException("productivity.delete", f"productivity/{timer_id}")</code>.</li>
+</ul></li>
 </ol>
+<p><strong>Note:</strong> <code>UserPermissionException</code> is a special exception we created to handle situations where a user attempts to complete an action they do not have permission for. It takes two parameters – an action string and a resource string. As listed in the requirements, we have provided the parameters for each <code>UserPermissionException</code> you must raise. We will go over this in more detail in class, so you do not need to concern yourself with the logic behind this at the moment!</p>
 <h3 id="task-3-finish-the-service-methods">Task 3: Finish the Service Methods</h3>
 <p>Now, everything is set up for you to finish writing the service methods! Please finish implementing each of the service methods with the <code>TODO</code>s in the file and the requirements below in mind.</p>
 <p>As described in the SQLAlchemy tutorial/docs, be sure to commit the changes you make to the session!</p>
