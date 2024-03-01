@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1709307379.5359316">
+  <link rel="stylesheet" href="/static/styles.css?v=1709307546.0883443">
 </head>
 
 <body>
@@ -55,7 +55,7 @@
 <ul>
 <li><a href="#task-1-set-up-the-pomodorotimerentity">Task 1: Set Up the <code>PomodoroTimerEntity</code></a></li>
 <li><a href="#task-2-load-the-demo-data-into-the-database">Task 2: Load the Demo Data Into the Database</a></li>
-<li><a href="#task-3-complete-the-get_timers-service-method-and-its-tests">Task 3: Complete the <code>get_timers</code> Service Method and its Tests</a></li>
+<li><a href="#task-3-complete-the-get_timers-service-method-and-run-its-tests">Task 3: Complete the <code>get_timers</code> Service Method and Run its Tests</a></li>
 <li><a href="#task-4-update-the-remaining-service-methods-and-test-them">Task 4: Update the remaining service methods and test them</a></li>
 <li><a href="#task-5-test-your-code-on-the-local-server">Task 5: Test Your Code on the Local Server</a></li>
 </ul></li>
@@ -101,12 +101,12 @@
 <li>Go to the <code>backend/script/reset_demo.py</code> script file and complete the <code>TODO</code> load the demo data into the productivity feature.</li>
 <li>Once you have completed it, run the <code>python3 -m backend.script.reset_demo</code> script to ensure it works and loaded the data.</li>
 </ol>
-<h3 id="task-3-complete-the-get_timers-service-method-and-its-tests">Task 3: Complete the <code>get_timers</code> Service Method and its Tests</h3>
+<h3 id="task-3-complete-the-get_timers-service-method-and-run-its-tests">Task 3: Complete the <code>get_timers</code> Service Method and Run its Tests</h3>
 <p>Now that we have the entity set up, we may continue on to implementing the service methods in <code>backend/services/productivity.py</code>! In this task, you will focus on just one method to complete it end-to-end. Since the API routes in <code>backend/api/productivity.py</code> simply call on the service methods, we don’t need to make any changes to the routes.</p>
 <p>However, because we would like to ensure that only the user that created the timer can view it, we do need to update the code in a few ways to allow for user-specific data querying and permissions checks.</p>
 <p>In the API routes, the first step has already been completed: adding <code>subject: User = Depends(registered_user)</code> to each of endpoint functions. In brief, <code>Depends(registered_user)</code> is a dependency injection that allows the currently logged in user to be injected and bound to the <code>subject</code> parameter. Please refer to the <code>docs/auth.md</code> docs file “Backend Routes Requiring a Registered User” section for more information about how this works!</p>
 <p>The second step is updating the service method to take in this <code>subject</code> parameter and enforce permissions as needed. You will complete this according to the <code>TODO</code>s in the service file and the requirements below.</p>
-<p>The third step is testing via Pytest tests, one which is already provided for <code>get_timers</code>, found in <code>backend/test/services/productivity_test.py</code>. You will run this test via the command:</p>
+<p>The third step is testing via Pytest tests, one which is already provided for <code>get_timers</code>, found in <code>backend/test/services/productivity_test.py</code>. You will run this test via the CLI command:</p>
 <p><code>pytest backend/test/services/productivity_test.py::test_get_timers</code></p>
 <p>The final step is validating the end-to-end route from the running web app in development.</p>
 <p><strong>Requirements:</strong></p>
