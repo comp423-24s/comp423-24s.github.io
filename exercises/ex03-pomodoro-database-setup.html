@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> EX01 Pomodoro Frontend Setup - COMP423 - 23S</title>
+  <title> EX03 Pomodoro Database Setup - COMP423 - 23S</title>
   <link rel="icon" type="image/png" href="/static/tabbrand.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1709260250.6220653">
+  <link rel="stylesheet" href="/static/styles.css?v=1709300499.5030382">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
   <div id="exercises-page" class="container">
     <div class="row pt-4">
       <div class="col-12">
-        <h2>EX01 Pomodoro Frontend Setup</h2>
+        <h2>EX03 Pomodoro Database Setup</h2>
         <hr class="title" />
       </div>
     </div>
@@ -60,14 +60,13 @@
             </div>
         </div>
         <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="setup-team-on-github-classroom">Setup Team on GitHub Classroom</h2>
+<p>Teams can be found here <a href="https://docs.google.com/spreadsheets/d/1uQ_LlalW6lHUZGS7HMnWtbO0t4hu2kC_WDDSa024rj0/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/1uQ_LlalW6lHUZGS7HMnWtbO0t4hu2kC_WDDSa024rj0/edit?usp=sharing</a></p>
 <ol type="1">
-<li><p>One member of the team should carefully create the team. Only one member needs to take this step <em>first</em>. Create a team named “EX01 NN” where the NN is the TEAM NUMBER of your group on the pairings page sent out via Canvas. Check it closely! Accept the assignment on behalf of your team and, after refreshing, it will create a repository at <code>github.com/comp423-24s/csxl-ex01-pomodoro-front-end-team-NN</code>. Assignment acceptance link: <ADD LINK></p></li>
-<li><p>After completing Step 1, all other members of the team should join the correct team and accept the assignment to be added to the repository. Assignment acceptance link: <ADD LINK></p></li>
+<li><p>One member of the team should carefully create the team. Only one member needs to take this step <em>first</em>. Create a team named “EX03 NN” where the NN is the TEAM NUMBER of your group on the pairings page sent out via Canvas. Check it closely! Accept the assignment on behalf of your team and, after refreshing, it will create a repository at <code>github.com/comp423-24s/ex03-pomodoro-backend-team-NN</code>. Assignment acceptance link: <a href="https://classroom.github.com/a/ohRjlJK4" class="uri">https://classroom.github.com/a/ohRjlJK4</a></p></li>
+<li><p>After completing Step 1, all other members of the team should join the correct team and accept the assignment to be added to the repository. Assignment acceptance link: <a href="https://classroom.github.com/a/ohRjlJK4" class="uri">https://classroom.github.com/a/ohRjlJK4</a></p></li>
 </ol>
 <h2 id="add-team-remote-to-csxl-repository">Add Team Remote to CSXL Repository</h2>
 <ol type="1">
-<li>Be sure to clone into your team assignment repository! From this point onward, you should only be working in that repo, not the “main” CSXL repo.</li>
-<li>Since the <code>.env</code> file is specific to each local repository, <strong><em>both members will need to recreate it before you can run the dev container</em></strong>! Refer back to the <code>docs/get_started.md</code> file as needed.</li>
 <li>In the Docker UI, make sure to fully stop the CSXL / EX01 / EX02 containers, including the db.
 <ol type="a">
 <li>Go to Docker Desktop.</li>
@@ -75,6 +74,8 @@
 <li>In the actions section, if any containers are running, click the stop button.</li>
 <li>Make sure to expand the container and ensure that the db is also stopped.</li>
 </ol></li>
+<li>Be sure to clone into your team assignment repository! From this point onward, you should only be working in that repo, not the “main” CSXL repo.</li>
+<li>Since the <code>.env</code> file is specific to each local repository, <strong><em>both members will need to recreate it before you can run the dev container</em></strong>! Refer back to the <code>docs/get_started.md</code> file as needed.</li>
 <li>Make a branch off of <code>ex03-starter</code> named <code>stage</code>. This is the branch you will be working off of and merging your work-in-progress branches into.</li>
 <li>Don’t forget to branch off of <code>stage</code> before starting your work!!</li>
 </ol>
