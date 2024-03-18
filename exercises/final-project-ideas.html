@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1710764205.6873817">
+  <link rel="stylesheet" href="/static/styles.css?v=1710765832.6771345">
 </head>
 
 <body>
@@ -69,8 +69,8 @@
 <li>Headline</li>
 <li>Synopsis</li>
 <li>Main Story (written in Markdown)</li>
-<li>Authors (relationship to users)</li>
-<li>Organization (relationship to an org)</li>
+<li>Author (relationship to a user)</li>
+<li>Organization (optional relationship to an Organization)</li>
 <li>State (Draft, Published, Archived)</li>
 <li>Slug (unique string used in URL rather than news ID)</li>
 <li>Image URL (optional link to an image for use in feed listing)</li>
@@ -82,7 +82,7 @@
 <p>There must be an administrator-only view protected by the permission system that provides Create/Read/Update/Delete/Search (CRUD) listing and editor for adding news stories to the database. Ideally, the news post list view should be paginated (similar to the Users list view in User Administration). The individual news post editor should be pleasant to use and enable working on drafts ahead of publishing. For a post author/administrator, it should be possible to view a draft as “users will see it” at its URL on the front-end; but users without permission should see a “not found” page.</p>
 <p>Stretch goals and extension ideas:</p>
 <ol type="1">
-<li>Make it possible for news posts to be made by student org</li>
+<li>Multiple author support</li>
 <li>Design and integrate a “Coworking Widget” above the news feed on the home page that is useful for visitors to the XL (e.g. perhaps it just displays open hours, or maybe shows your current/next reservation, and links to the coworking home page). What would <em>your group</em> want it to be?</li>
 <li>Mark a news post as an “Announcement” and update the design of the title bar on the app to reflect an announcement exists and can be opened in a modal</li>
 </ol>
