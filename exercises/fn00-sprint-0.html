@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1710950347.6845179">
+  <link rel="stylesheet" href="/static/styles.css?v=1711118950.3261147">
 </head>
 
 <body>
@@ -52,9 +52,14 @@
                         <ul class="overview-item"><ul>
 <li><a href="#sprint-0-expectations">Sprint 0 Expectations</a></li>
 <li><a href="#the-design-document">1. The Design Document</a></li>
-<li><a href="#establish-development-environments-and-staging-infrastructure-on-carolina-cloudapps">2. Establish Development Environments and Staging Infrastructure on Carolina CloudApps</a></li>
-<li><a href="#practice-project-management-best-practices.">3. Practice project management best practices.</a></li>
-<li><a href="#to-gain-familiarity-with-the-code-base-and-git-workflow-to-begin-making-progress.">4. To gain familiarity with the code base and <code>git</code> workflow to begin making progress.</a></li>
+<li><a href="#establish-development-environments">2. Establish Development Environments</a></li>
+<li><a href="#practice-project-management-best-practices">3. Practice project management best practices</a></li>
+<li><a href="#to-gain-familiarity-with-the-code-base-and-git-workflow-to-begin-making-progress.">4. To gain familiarity with the code base and <code>git</code> workflow to begin making progress.</a>
+<ul>
+<li><a href="#front-end">Front-end</a></li>
+<li><a href="#back-end">Back-end</a></li>
+</ul></li>
+<li><a href="#establishing-cloudapps-deployment">5. Establishing CloudApps Deployment</a></li>
 </ul>
 </</ul>
                     </div>
@@ -89,13 +94,43 @@
 <li>What concerns exist for security and privacy of data? Should the capabilities you are implementing be specific to only certaain users or roles? (For example: When Sally Student makes a reservation, only Sally Student or Amy Ambassador should be able to cancel the reservation. Another student, such as Sam Student, should not be able to cancel Sally’s reservation.)</li>
 </ol></li>
 </ol>
-<h2 id="establish-development-environments-and-staging-infrastructure-on-carolina-cloudapps">2. Establish Development Environments and Staging Infrastructure on Carolina CloudApps</h2>
-<p>Coming Soon</p>
-<h2 id="practice-project-management-best-practices.">3. Practice project management best practices.</h2>
-<p>Coming Soon</p>
+<h2 id="establish-development-environments">2. Establish Development Environments</h2>
+<p>To establish your course repository, team project board, and local development environment, please follow the instructions in class on 3/22 found here: </exercses/final-project-setup.html>.</p>
+<h2 id="practice-project-management-best-practices">3. Practice project management best practices</h2>
+<p>Team tasks that are delegated out should be added to your final project board(s), given meaningful descriptions or subtasks, assigned to appropriate team member(s), and updated as progress is made. All cards on the project should also be linked to issues in your team repository. This practice is a slight deviation from industry, where non-codebase related project management and tasking may occur in another tool, but for simplicity purposes we will keep all project management concerns in GitHub to gain comfort with the tool and for standardization in the class.</p>
+<p>Changes to the codebase, as described in the design document expectation, should be made on branches and pushed to branches before being Pull Requested and Code Reviewed by a team member. This will simultaneously <em>slow down progress</em> and <em>increase your team feature’s quality and increase shared understanding of the codebase</em> which is a worthwhile trade-off in software engineering.</p>
 <h2 id="to-gain-familiarity-with-the-code-base-and-git-workflow-to-begin-making-progress.">4. To gain familiarity with the code base and <code>git</code> workflow to begin making progress.</h2>
-<p>This first sprint is all about <em>planning</em> before <em>programming</em> and on-boarding with a new code base. We do want to promote <em>some</em> progress, though, to promote a sense of progress and create some momentum going into the next sprint.</p>
-<p><em>After your design document is complete and submitted</em>, we will have suggestions on how to get started posted here and shared on Canvas.</p>
+<p><em>After your design document is complete and submitted</em>, identify what the most pressing areas of progress toward your most important story minimally look like. Here are our suggestions:</p>
+<h3 id="front-end">Front-end</h3>
+<ol type="1">
+<li>Add a new Component Page and/or Widget(s) to the front-end. All UI must use standard <a href="https://material.angular.io/">Angular Material UI</a> library widgets wherever possible.</li>
+<li>Add an Angular Service to the front-end and stub out method signatures with dummy data and <code>console.log</code> messages as needed for verification of methods being called.</li>
+<li>Connect interactivity of Step 1 to the front-end service methods of Step 2.</li>
+<li>Be sure your Component Page and/or Widget(s) are navigable through the application (if a full page: add an appropriate link or sidebar link, if a widget: add it where it will ultimately show up)</li>
+</ol>
+<h3 id="back-end">Back-end</h3>
+<ol type="1">
+<li>Add new route(s) to the API as will be needed by the front-end component/widgets above.</li>
+<li>Extend with additional fields or add new Pydantic data models for the route(s).</li>
+<li>Stub out responses such that your <code>/docs</code> OpenAPI user interface responds with expected model data.</li>
+</ol>
+<p>You should divvy up tasks on your project board and pair program. We encourage everyone tries to contribute something small that spans both <em>both</em> the front and backend. <em>Do not divide work by breaking up frontend from backend, divide by taking on features that span the full stack across pairs.</em> Everyone is expected to make at least one Pull Request outside of the design spec. The Pull Request should have at least one additional improvement commit that improves based on a Code Reviewer’s suggestions. This PR should ultimatey be approved and merged into Stage ahead of the deadline. After final approval, it is the author’s responsibility to merge the changes in and write the final commit message for your merge. When merging, you should “Squash and Merge” the commits into a single, well documented commit. Commit messages should follow the expectations of our reading on writing commit messages well.</p>
+<p>Everyone is expected to serve as a Code Reviewer for at least one Pull Request. As a Code Reviewer, you are expected to find and request at least one improvement to the PR. Once the PR author addresses your concerns with improvement commit(s), you should review and approve the PR author to merge in the changes.</p>
+<p>The small steps of progress made in this section will be due by Monday, March April 1st at 11:59pm and must be successfully deployed to your staging environment and demoable in class on Wednesday, April 3rd.</p>
+<h2 id="establishing-cloudapps-deployment">5. Establishing CloudApps Deployment</h2>
+<p>All members of the team should clean-up their prior OKD cloud deployment to make room for deploying the final project. The steps to follow are:</p>
+<ol type="1">
+<li>Login to OpenShift (remember: off-campus access requires connecting to the VPN)</li>
+<li>Open a Terminal on your Host Machine (not the VSCode Dev Env!)</li>
+<li>Login to the OpenShift Terminal on your Host Machine (not the VSCode DevEnv!)</li>
+<li>Navigate to your project’s directory in the terminal</li>
+<li>Login to OpenShift’s <code>oc</code> program. You will need a new token from OpenShift: Click your name after logging in, select Copy Login Command, Display Token, copy the <code>oc login ...</code> line, paste into Terminal.</li>
+<li>Go ahead and delete your EX01 deployment now that everything is graded:</li>
+</ol>
+<ul>
+<li>Run: <code>oc delete all --selector app=ex01</code></li>
+</ul>
+<p>Instructions for OKD deployment of final projects coming soon.</p>
 </div>
 
        
