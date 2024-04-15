@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> EX01 - EX01 Deployment - COMP423 - 23S</title>
+  <title> FN - Final Project Deployment - COMP423 - 23S</title>
   <link rel="icon" type="image/png" href="/static/tabbrand.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1713198720.3853307">
+  <link rel="stylesheet" href="/static/styles.css?v=1713198720.6228216">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
   <div id="exercises-page" class="container">
     <div class="row pt-4">
       <div class="col-12">
-        <h2>EX01 - EX01 Deployment</h2>
+        <h2>FN - Final Project Deployment</h2>
         <hr class="title" />
       </div>
     </div>
@@ -72,7 +72,7 @@
             </div>
         </div>
         <div id="content" class="content col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="staging-server-environment-devops">Staging Server Environment (DevOps)</h2>
-<p>Your team should setup the staging environment as a pair. Choose one pair members’ CloudApps namespace to setup the production staging environment. The other team member(s) will be added to this namespace as collaborator(s) so everyone has access.</p>
+<p>Your team should setup the staging environment on one team member’s namespace. Choose one members’ CloudApps namespace to setup the production staging environment. The other team member(s) will be added to this namespace as collaborator(s) so everyone has access.</p>
 <p>In establishing the staging environment on our cloud infrastructure, we will work from the bottom up. We will start with the database server, then add secrets needed to build and run the application, then add the application, and finally add the route to expose the application to the internet.</p>
 <h2 id="accessing-cloud-infrastructure">Accessing Cloud Infrastructure</h2>
 <p><strong>Warning:</strong> If you are not on-campus when working with the cloud infrastructure, it will have the appearance of being “down”. This is due to a firewall preventing off-campus access without a virtual private network VPN connection. If you try to load Cloud Apps at any point this semester and see a non-responsive or blank web page, it is likely because you are not connected via Eduroam nor the VPN.</p>
@@ -139,14 +139,14 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">openssl</span> rand -hex 32</span></code></pre></div>
 <p>From your DevContainer’s terminal, in a shell prompt run the following command to create the secret on OpenShift <em>BE CAREFUL TO AVOID TYPOS</em>.</p>
 <p>You can copy this command and edit it, replacing the placeholders, in an empty text file before running the command in your DevContainer terminal.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">oc</span> create secret generic ex01-environment <span class="kw">\</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">oc</span> create secret generic final-project-environment <span class="kw">\</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    <span class="ex">--from-literal</span>=POSTGRES_HOST=db <span class="kw">\</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>    <span class="ex">--from-literal</span>=POSTGRES_PORT=5432 <span class="kw">\</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="ex">--from-literal</span>=POSTGRES_DATABASE=csxl <span class="kw">\</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>    <span class="ex">--from-literal</span>=POSTGRES_USER=<span class="op">&lt;</span>from-secret-above<span class="op">&gt;</span> <span class="kw">\</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>    <span class="ex">--from-literal</span>=POSTGRES_PASSWORD=<span class="op">&lt;</span>from-secret-above<span class="op">&gt;</span> <span class="kw">\</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>    <span class="ex">--from-literal</span>=JWT_SECRET=<span class="op">&lt;</span>generate-random-string<span class="op">&gt;</span></span></code></pre></div>
-<p>From the OpenShift web console, you can verify that the secret was created by navigating to the Secrets page and selecting the <code>ex01-environment</code> secret.</p>
+<p>From the OpenShift web console, you can verify that the secret was created by navigating to the Secrets page and selecting the <code>final-project-environment</code> secret.</p>
 <h3 id="deploy-key-secrets">Deploy Key Secrets</h3>
 <p>Before OpenShift’s builder process is able to clone your repository from GitHub, we need to establish a means for OpenShift to <em>authenticate</em> itself to gain access to your team’s private repository. This will closely resemble how <em>you</em> authenticate yourself with GitHub, but with the key difference it’s the builder process running on Carolina Cloud app’s machines– not yours!– that needs to gain access to your GitHub repository.</p>
 <p>It is worth pausing to reflect on how sensitive this step is in real world applications: you are setting up a means to directly access your code in a private repository. At organizations you may find yourself employed by, or founding, the code in your private repositories are some of it’s most valuable assets and their secure handling is very important to maintaining their secrecy and protecting customers from hacks.</p>
@@ -169,44 +169,43 @@
 <li>Click Add Key</li>
 </ol>
 <p>Now run the following command to add the private key as a secret to your Cloud Apps account:</p>
-<pre><code>$ oc create secret generic comp590-ex01-deploykey \
+<pre><code>$ oc create secret generic comp590-final-project-deploykey \
     --from-file=ssh-privatekey=./deploy_key \
     --type=kubernetes.io/ssh-auth</code></pre>
 <p>To verify the secret was correctly created, run the following command:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">oc</span> get secret comp590-ex01-deploykey</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">oc</span> get secret comp590-final-project-deploykey</span></code></pre></div>
 <p>Finally, you need to link the secret to the “builder” process of OpenShift. This will allow OpenShift to use the secret when it pulls your code from GitHub and builds your project.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">oc</span> secrets link builder comp590-ex01-deploykey</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">oc</span> secrets link builder comp590-final-project-deploykey</span></code></pre></div>
 <p>This command will succeed silently.</p>
 <h3 id="create-the-openshift-application">Create the OpenShift Application</h3>
-<p>IMPORTANT: Be sure you substitute your team’s information in TWO places below! First: the repository URL, second the HOST variable should not be <code>ex01-team-XX</code>, but should instead be your team number.</p>
-<p>Team numbers can be found here: <a href="https://docs.google.com/spreadsheets/d/1i3faE45F3FvrzqfJgS2DqdjPTftaNUQ_cDk6cgfM3j4/edit#gid=0" class="uri">https://docs.google.com/spreadsheets/d/1i3faE45F3FvrzqfJgS2DqdjPTftaNUQ_cDk6cgfM3j4/edit#gid=0</a></p>
+<p>IMPORTANT: Be sure you substitute your team’s information in TWO places below! First: the repository URL, second the HOST variable should not be <code>csxl-team-XX</code>, but should instead be your team zone + number. This is your team’s table. Using lowercase is encouraged.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">oc</span> new-app python:3.11~git@github.com:comp423-24s/<span class="op">&lt;</span>your-final_repo_name<span class="op">&gt;</span>.git#stage <span class="kw">\</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>  <span class="ex">--source-secret</span>=comp590-ex01-deploykey <span class="kw">\</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>  <span class="ex">--name</span>=ex01 <span class="kw">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>  <span class="ex">--source-secret</span>=comp590-final-project-deploykey <span class="kw">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>  <span class="ex">--name</span>=final-project <span class="kw">\</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>  <span class="ex">--strategy</span>=docker <span class="kw">\</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>  <span class="ex">--env</span>=MODE=development <span class="kw">\</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>  <span class="ex">--env</span>=HOST=ex01-team-<span class="op">&lt;</span>TEAM NUMBER<span class="op">&gt;</span>-comp590-24s.apps.cloudapps.unc.edu</span></code></pre></div>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>  <span class="ex">--env</span>=HOST=csxl-team-<span class="op">&lt;</span>TEAM NUMBER<span class="op">&gt;</span>-comp590-24s.apps.cloudapps.unc.edu</span></code></pre></div>
 <p>Notice the <code>#stage</code> at the end of the repository URL. This is the branch name that OpenShift will pull from. When setting up the final project, you created a branch named <code>stage</code> and established it as the primary branch for your repository. This notion of a staging branch is a common practice in DevOps, and is a good way to keep your production code separate (live at csxl.unc.edu) from your development code (which you are establishing right now).</p>
 <p>While the project is building, add secrets to the environment variables of the deployment and verify their existence with <code>list</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">oc</span> set env deployment/ex01 --from=secret/ex01-environment</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">oc</span> set env deployment/ex01 --list</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">oc</span> set env deployment/final-project --from=secret/final-project-environment</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">oc</span> set env deployment/final-project --list</span></code></pre></div>
 <h3 id="exposing-the-application">Exposing the Application</h3>
 <p>Once your application builds, it will be running on a pod that is not exposed to the internet. To establish a public route, first we need to expose it as a service, run the following command:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">oc</span> expose deployment ex01 <span class="kw">\</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">oc</span> expose deployment final-project <span class="kw">\</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>  <span class="ex">--port</span>=80 <span class="kw">\</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>  <span class="ex">--target-port</span>=8080</span></code></pre></div>
 <p>Next, we can create a route to the service with a specifically chosen hostname. <strong>Please replace <code>XX</code> with your team’s number and table number</strong>.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">oc</span> create route edge <span class="kw">\</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>  <span class="ex">--service</span>=ex01 <span class="kw">\</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>  <span class="ex">--hostname</span>=ex01-team-XX-comp590-24s.apps.unc.edu</span></code></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>  <span class="ex">--service</span>=final-project <span class="kw">\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>  <span class="ex">--hostname</span>=csxl-team-<span class="op">&lt;</span>TEAM NUMBER<span class="op">&gt;</span>-comp590-24s.apps.cloudapps.unc.edu</span></code></pre></div>
 <p>You can now visit the hostname for your team and access it in the browser. If you see a message from OpenShift that says “Application is not available”, it means that the application is still building. Once your build completes, you should see the application running, but there is still one more important step: resetting the database.</p>
 <h3 id="resetting-the-database">Resetting the Database</h3>
 <p>The database that you created in the previous step is empty. You will need to reset the database to the state that it was in when you submitted your final project. To do this, you will need to run the <code>reset_demo.py</code> script that is included in your final project repository.</p>
 <p>This script needs to be run from within your pod, so in this section you will learn how to connect to your pod and run commands from within it.</p>
 <p>First, you will need to find the name of your pod. Run the following command to get a list of pods running in your project:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">oc</span> get pods --selector deployment=ex01</span></code></pre></div>
-<p>You should see a single pod with a name like <code>ex01-648fdff8d5-rr4fs</code>. The letters and numbers at the end of the name are a unique identifier for the pod. This identifier changes every time a new build of your pod is deployed, environment variables change, the pod gets restarted, and in other instances. Copy the name of your running pod and run the following command to connect to it:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ex">oc</span> rsh ex01-YOUR-POD-IDENTIFIER</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="ex">oc</span> get pods --selector deployment=final-project</span></code></pre></div>
+<p>You should see a single pod with a name like <code>final-project-648fdff8d5-rr4fs</code>. The letters and numbers at the end of the name are a unique identifier for the pod. This identifier changes every time a new build of your pod is deployed, environment variables change, the pod gets restarted, and in other instances. Copy the name of your running pod and run the following command to connect to it:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ex">oc</span> rsh final-project-YOUR-POD-IDENTIFIER</span></code></pre></div>
 <p>The <code>rsh</code> stands for “remote shell”. You are now connected to your pod running in the cloud via a secure shell (ssh)! The commands you run are not running on your host machine, but on the CloudApps infrastructure. If you <code>ls</code> you will see you are in your project’s built directory. Not everything is there, importantly not the frontend because it was compiled into the <code>static</code> directory as part of the build process.</p>
 <p>To confirm you are logged into your pod, you can assure yourself with the following command:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="fu">hostname</span></span></code></pre></div>
@@ -220,7 +219,7 @@
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="ex">python3</span> -m backend.script.reset_demo</span></code></pre></div>
 <h3 id="setting-up-push-to-deploy-webhooks">Setting up Push-to-Deploy Webhooks</h3>
 <p>GitHub repositories can be configured with webhooks, which are URLs that get called when events occur in order to notify another service of the event. In our case, we want to set up a webhook so that when we merge pull requests to the <code>stage</code> branch, OpenShift’s build configuration for our project will receive a webhook notification and kick off a new build and deploy pipeline.</p>
-<p>To find the URL for the web hook, open up your project in OpenShift and navigate to the Admin sidebar, followed by Builds &gt; BuildConfigs. Select <code>ex01</code> and look for the webhooks section at the bottom. Click the Copy URL with Secrets button for the GitHub webhook. This copies the URL to your clipboard.</p>
+<p>To find the URL for the web hook, open up your project in OpenShift and navigate to the Admin sidebar, followed by Builds &gt; BuildConfigs. Select <code>final-project</code> and look for the webhooks section at the bottom. Click the Copy URL with Secrets button for the GitHub webhook. This copies the URL to your clipboard.</p>
 <p>Next, open your project’s settings in GitHub and navigate to Webhooks. Click Add Webhook and paste the URL into the Payload URL field. <strong>Be sure to set the content type to <code>application/json</code> and leave the secret field empty.</strong> Click Add Webhook.</p>
 <p>From the “Webhooks” page you’re brought back to, click your webhook. Then go to the Recent Deliveries tab. You should see a successful delivery. Congratulations, your project is now set up to automatically build and deploy every time your team merges PRs into the <code>stage</code> branch! As a reminder, if your data entities change, you will need to reset the database in staging after the build and deploy completes.</p>
 <h3 id="youre-in-stagingproduction">You’re in Staging/Production!</h3>
