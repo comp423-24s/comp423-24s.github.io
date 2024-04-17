@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1713202954.3720715">
+  <link rel="stylesheet" href="/static/styles.css?v=1713378591.3433895">
 </head>
 
 <body>
@@ -184,7 +184,7 @@
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>  <span class="ex">--name</span>=final-project <span class="kw">\</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>  <span class="ex">--strategy</span>=docker <span class="kw">\</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>  <span class="ex">--env</span>=MODE=development <span class="kw">\</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>  <span class="ex">--env</span>=HOST=csxl-team-<span class="op">&lt;</span>TEAM NUMBER<span class="op">&gt;</span>-comp590-24s.apps.cloudapps.unc.edu</span></code></pre></div>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>  <span class="ex">--env</span>=HOST=csxl-team-<span class="op">&lt;</span>TEAM NUMBER<span class="op">&gt;</span>-comp590-24s.apps.unc.edu</span></code></pre></div>
 <p>Notice the <code>#stage</code> at the end of the repository URL. This is the branch name that OpenShift will pull from. When setting up the final project, you created a branch named <code>stage</code> and established it as the primary branch for your repository. This notion of a staging branch is a common practice in DevOps, and is a good way to keep your production code separate (live at csxl.unc.edu) from your development code (which you are establishing right now).</p>
 <p>While the project is building, add secrets to the environment variables of the deployment and verify their existence with <code>list</code>:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">oc</span> set env deployment/final-project --from=secret/final-project-environment</span>
@@ -197,7 +197,7 @@
 <p>Next, we can create a route to the service with a specifically chosen hostname. <strong>Please replace <code>XX</code> with your team’s number and table number</strong>.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="ex">oc</span> create route edge <span class="kw">\</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>  <span class="ex">--service</span>=final-project <span class="kw">\</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>  <span class="ex">--hostname</span>=csxl-team-<span class="op">&lt;</span>TEAM NUMBER<span class="op">&gt;</span>-comp590-24s.apps.cloudapps.unc.edu</span></code></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>  <span class="ex">--hostname</span>=csxl-team-<span class="op">&lt;</span>TEAM NUMBER<span class="op">&gt;</span>-comp590-24s.apps.unc.edu</span></code></pre></div>
 <p>You can now visit the hostname for your team and access it in the browser. If you see a message from OpenShift that says “Application is not available”, it means that the application is still building. Once your build completes, you should see the application running, but there is still one more important step: resetting the database.</p>
 <h3 id="resetting-the-database">Resetting the Database</h3>
 <p>The database that you created in the previous step is empty. You will need to reset the database to the state that it was in when you submitted your final project. To do this, you will need to run the <code>reset_demo.py</code> script that is included in your final project repository.</p>
